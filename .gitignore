@@ -1,0 +1,37 @@
+# Godot 4+
+
+.godot/
+
+export.cfg
+
+export_presets.cfg
+
+# Imported resources
+
+*.import
+
+# Mono
+
+.mono/
+
+# Temporary files
+
+*.tmp
+
+*.temp
+
+# System files
+
+.DS_Store
+
+Thumbs.db
+# Don't commit large binary files unless using Git LFS
+
+*.png
+
+*.jpg
+
+*.wav
+
+*.ogg
+
