@@ -97,6 +97,8 @@ func _on_body_entered(body: Node2D):
 	if body.is_in_group("player"):
 		player_in_range = true
 		interaction_label.visible = true # Show the "Press E to Save" label
+		Global.near_save = true
+		#Global.saving = true
 		print("Player entered SaveSpot area.") # Updated print statement
 		# --- DEBUGGING: Confirm collision layers/masks ---
 		print("SaveSpot: Body '%s' entered. Player layers: %s, SaveSpot collision mask: %s" % [body.name, body.get_collision_layer(), get_collision_mask()])
@@ -113,4 +115,5 @@ func _on_body_exited(body: Node2D):
 	if body.is_in_group("player"):
 		player_in_range = false
 		interaction_label.visible = false # Hide the label
+		Global.near_save = false
 		print("Player exited SaveSpot area.") # Updated print statement

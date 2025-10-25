@@ -160,7 +160,7 @@ func physics_process(delta):
 	else:
 		#player.scale = Vector2(1,1)
 		
-		if Input.is_action_just_pressed("yes") and player.can_attack == true and Global.playerAlive and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and player.not_busy:
+		if Input.is_action_just_pressed("yes") and player.can_attack == true and Global.playerAlive and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and player.not_busy and not Global.near_save:
 			player.shoot_fireball()
 			print("Magus shooting fireball!")
 			

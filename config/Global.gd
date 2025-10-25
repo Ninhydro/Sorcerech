@@ -128,6 +128,7 @@ var dashing := false
 var camouflage := false
 var time_freeze := false
 
+var near_save = false
 var saving = false
 var loading = false
 

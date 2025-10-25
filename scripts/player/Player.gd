@@ -232,15 +232,8 @@ func _ready():
 # This is your main physics processing loop
 func _physics_process(delta):
 	# --- APPLY LOADED POSITION (ONE-TIME) ---
-	# Assign self to Global.playerBody here ensures it's always up-to-date
-	# This should ideally be done once at load/spawn, not every physics frame.
-	# But if you move Global.playerBody assignment to _ready,
-	# make sure it happens *before* any other scripts try to access it.
-	#print(velocity)
-	
 	Global.playerBody = self
 	Dialogic.VAR.set_variable("player_current_form", get_current_form_id())
-
 	Global.set_player_form(get_current_form_id())
 	Global.current_form = get_current_form_id()
 	
@@ -248,25 +241,18 @@ func _physics_process(delta):
 		print("EMERGENCY: Velocity was NaN! Resetting to zero.")
 		velocity = Vector2.ZERO
 		
-	#print(global_position)
-	#camera_pivot.position = camera_pivot.position.lerp(Vector2.ZERO, 0.1) # Adjust speed
-
 	if _should_apply_loaded_position:
 		print("Player._physics_process: Applying loaded position (one-time).")
 		global_position = Vector2(Global.current_loaded_player_data.get("position_x"), Global.current_loaded_player_data.get("position_y"))
-		velocity = Vector2.ZERO # Crucial to prevent residual movement after loading
-		_should_apply_loaded_position = false # Set flag to false so it only runs once
-		Global.current_loaded_player_data = {} # Clear the temporary data from Global after use
+		velocity = Vector2.ZERO
+		_should_apply_loaded_position = false
+		Global.current_loaded_player_data = {}
 		print("Player.gd: Position set to loaded: ", global_position)
 	# --- END APPLY LOADED POSITION ---
 
 	# --- CUTSCENE OVERRIDE ---
-	# If a cutscene is active, player's direct input is ignored.
-	# Movement and animations are handled by external calls (AnimationPlayer methods).
 	if Global.is_cutscene_active:
-		velocity = Vector2.ZERO # Ensure no residual input-based movement
-		# Do NOT return here. We still need gravity, knockback, and move_and_slide().
-		# External calls will set velocity or global_position directly.
+		velocity = Vector2.ZERO
 	# --- END CUTSCENE OVERRIDE ---
 
 	# Your existing FSM updates
@@ -275,16 +261,23 @@ func _physics_process(delta):
 	if current_state:
 		current_state.physics_process(delta)
 
-	Global.playerDamageZone = AreaAttack # Assuming AreaAttack is your damage area node
-	Global.playerHitbox = Hitbox # Assuming Hitbox is your hitbox node
+	Global.playerDamageZone = AreaAttack
+	Global.playerHitbox = Hitbox
 
 	# Telekinesis UI state management
 	if telekinesis_controller and telekinesis_controller.is_ui_open:
 		UI_telekinesis = true
 	else:
 		UI_telekinesis = false
-	#print(wall_jump_just_happened)
-	# --- Player Input and Movement (Only if NOT in a cutscene and NOT dead) ---
+
+	# --- NEW: CHECK IF PLAYER IS BUSY (can't perform normal actions) ---
+	var is_busy = (dead or Global.is_cutscene_active or player_hit or knockback_timer > 0 or 
+				  is_grappling_active or Global.dashing or is_launched or canon_enabled or 
+				  telekinesis_enabled or Global.saving or Global.loading or is_grabbing_ledge or 
+				  Global.attacking or Global.is_dialog_open or Global.teleporting)
+	# --- END NEW BUSY CHECK ---
+
+	# --- Player Input and Movement (Only if NOT busy and NOT dead) ---
 	if not dead and not Global.is_cutscene_active: # <-- IMPORTANT: Add Global.is_cutscene_active check here
 		var input_dir = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 
@@ -343,38 +336,41 @@ func _physics_process(delta):
 
 
 		else: # Normal movement and input processing
-			if facing_direction == -1: # No need for !dead check here, already done above
-				sprite.flip_h = true
-				AreaAttackColl.position = Vector2(-16,-8.75)
-				grapple_hand_point.position = Vector2(-abs(grapple_hand_point.position.x), grapple_hand_point.position.y)
+			# --- NEW: Only process movement if not busy ---
+			if not is_busy:
+				if facing_direction == -1: # No need for !dead check here, already done above
+					sprite.flip_h = true
+					AreaAttackColl.position = Vector2(-16,-8.75)
+					grapple_hand_point.position = Vector2(-abs(grapple_hand_point.position.x), grapple_hand_point.position.y)
 
-			else:
-				sprite.flip_h = false
-				AreaAttackColl.position = Vector2(16,-8.75)
-				grapple_hand_point.position = Vector2(abs(grapple_hand_point.position.x), grapple_hand_point.position.y)
+				else:
+					sprite.flip_h = false
+					AreaAttackColl.position = Vector2(16,-8.75)
+					grapple_hand_point.position = Vector2(abs(grapple_hand_point.position.x), grapple_hand_point.position.y)
 
 
-			# Apply horizontal movement based on input (only if not wall-jumping, dialog, or attacking)
-			if not wall_jump_just_happened and not Global.is_dialog_open and not Global.attacking and not is_grabbing_ledge and not is_grappling_active and not Global.saving and not Global.loading:
-				#print("movinggggggggg")
-				velocity.x = input_dir * move_speed  #* Global.global_time_scale # Use 'speed' here for normal movement 
-			elif wall_jump_just_happened: #or current_form = cyber form,
-				pass
-			elif is_grabbing_ledge:
-				velocity.x = 0
-			else:
-				velocity.x = 0 # Stop horizontal movement if dialog is open or attacking
-
-			# Jumping (only if on floor, no dialog, no attacking)
-			if is_on_floor() and Input.is_action_just_pressed("jump") and not Global.is_dialog_open and not Global.attacking and not is_grabbing_ledge and not is_grappling_active and not Global.saving and not Global.loading:
-				if get_current_form_id() != "UltimateCyber":
-					velocity.y = -jump_force
-				elif get_current_form_id() == "UltimateCyber":
-					# Ultimate Cyber jump is handled in its state
+				# Apply horizontal movement based on input (only if not wall-jumping, dialog, or attacking)
+				if not wall_jump_just_happened and not Global.is_dialog_open and not Global.attacking and not is_grabbing_ledge and not is_grappling_active and not Global.saving and not Global.loading:
+					#print("movinggggggggg")
+					velocity.x = input_dir * move_speed  #* Global.global_time_scale # Use 'speed' here for normal movement 
+				elif wall_jump_just_happened: #or current_form = cyber form,
 					pass
-				#velocity.y = -jump_force # * Global.global_time_scale
-			elif is_grabbing_ledge:
-				velocity.y += gravity+delta
+				elif is_grabbing_ledge:
+					velocity.x = 0
+				else:
+					velocity.x = 0 # Stop horizontal movement if dialog is open or attacking
+
+				# Jumping (only if on floor, no dialog, no attacking)
+				if is_on_floor() and Input.is_action_just_pressed("jump") and not Global.is_dialog_open and not Global.attacking and not is_grabbing_ledge and not is_grappling_active and not Global.saving and not Global.loading:
+					if get_current_form_id() != "UltimateCyber":
+						velocity.y = -jump_force
+					elif get_current_form_id() == "UltimateCyber":
+						# Ultimate Cyber jump is handled in its state
+						pass
+					#velocity.y = -jump_force # * Global.global_time_scale
+				elif is_grabbing_ledge:
+					velocity.y += gravity+delta
+			# --- END NEW BUSY CHECK FOR MOVEMENT ---
 		
 		if is_launched and cannon_form_switched:
 	# Restore previous form after launch
@@ -388,65 +384,68 @@ func _physics_process(delta):
 			can_switch_form = true
 			print("Exited cannon mode: Form switching re-enabled")
 	
-		# Attack input (only if not dialog open)
-		if Input.is_action_just_pressed("yes") and can_attack and not Global.is_dialog_open and not_busy:
-			var current_form = get_current_form_id()
-			var attack_started = false
-			if current_form == "Cyber":
-				attack_cooldown_timer.start(2.0)
-				attack_started = true
-				not_busy = false
-			elif current_form == "Magus":
-				attack_cooldown_timer.start(2.0)
-				attack_started = true
-				not_busy = false
-			elif current_form == "UltimateCyber":
-				attack_cooldown_timer.start(5.0)
-				attack_started = true
-				not_busy = false
-			elif current_form == "UltimateMagus" and combo_timer_flag:
-				combo_timer_flag = false
-				combo_timer.start(0.5)
-				attack_started = true
-				not_busy = false
-			start_cooldown()
-			
-			if attack_started:
-				can_attack = false
-				# Add your attack logic here (e.g., combat_fsm.change_state(AttackState.new(self)))
+		# --- NEW: Only process attack/skill inputs if not busy ---
+		if not is_busy:
+			# Attack input (only if not dialog open)
+			if Input.is_action_just_pressed("yes") and can_attack and not Global.is_dialog_open and not_busy:
+				var current_form = get_current_form_id()
+				var attack_started = false
+				if current_form == "Cyber":
+					attack_cooldown_timer.start(2.0)
+					attack_started = true
+					not_busy = false
+				elif current_form == "Magus":
+					attack_cooldown_timer.start(2.0)
+					attack_started = true
+					not_busy = false
+				elif current_form == "UltimateCyber":
+					attack_cooldown_timer.start(5.0)
+					attack_started = true
+					not_busy = false
+				elif current_form == "UltimateMagus" and combo_timer_flag:
+					combo_timer_flag = false
+					combo_timer.start(0.5)
+					attack_started = true
+					not_busy = false
+				start_cooldown()
+				
+				if attack_started:
+					can_attack = false
+					# Add your attack logic here (e.g., combat_fsm.change_state(AttackState.new(self)))
 
-		# Skill input (only if not dialog open)
-		if Input.is_action_just_pressed("no") and can_skill and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause:
-			print("=== PLAYER: 'no' pressed - Checking global flag: ", Global.ignore_player_input_after_unpause, " ===")
-			var current_form = get_current_form_id()
-			var skill_started = false
-			if current_form == "UltimateMagus" and not_busy: # Check for UltimateMagus first
-				skill_cooldown_timer.start(2.0)
-				skill_started = true
-				not_busy = false
-				start_cooldown()
-			elif current_form == "Cyber":
-				skill_cooldown_timer.start(0.2)
-				skill_started = true
-				not_busy = false
-				start_cooldown()
-			elif current_form == "Magus" and not_busy:
-				skill_cooldown_timer.start(10.0)
-				skill_started = true
-				not_busy = false
-				start_cooldown()
-			elif current_form == "UltimateCyber" and not_busy: # Assuming this is different from "UltimateCyber"
-				skill_cooldown_timer.start(15.0)
-				skill_started = true
-				not_busy = false
-				start_cooldown()
-			
-			
-			if skill_started:
-				can_skill = false
-				# Add your skill logic here (e.g., combat_fsm.change_state(SkillState.new(self)))
+			# Skill input (only if not dialog open)
+			if Input.is_action_just_pressed("no") and can_skill and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause:
+				print("=== PLAYER: 'no' pressed - Checking global flag: ", Global.ignore_player_input_after_unpause, " ===")
+				var current_form = get_current_form_id()
+				var skill_started = false
+				if current_form == "UltimateMagus" and not_busy: # Check for UltimateMagus first
+					skill_cooldown_timer.start(2.0)
+					skill_started = true
+					not_busy = false
+					start_cooldown()
+				elif current_form == "Cyber":
+					skill_cooldown_timer.start(0.2)
+					skill_started = true
+					not_busy = false
+					start_cooldown()
+				elif current_form == "Magus" and not_busy:
+					skill_cooldown_timer.start(10.0)
+					skill_started = true
+					not_busy = false
+					start_cooldown()
+				elif current_form == "UltimateCyber" and not_busy: # Assuming this is different from "UltimateCyber"
+					skill_cooldown_timer.start(15.0)
+					skill_started = true
+					not_busy = false
+					start_cooldown()
+				
+				
+				if skill_started:
+					can_skill = false
+					# Add your skill logic here (e.g., combat_fsm.change_state(SkillState.new(self)))
 
-		check_hitbox() # Call your hitbox update logic
+			check_hitbox() # Call your hitbox update logic
+		# --- END NEW BUSY CHECK FOR ATTACK/SKILL ---
 
 	# --- Dead state ---
 	if dead:
@@ -528,8 +527,8 @@ func _physics_process(delta):
 	handle_ledge_grab()
 	move_and_slide()
 
-	# --- FORM ROTATION (Only if NOT in a cutscene) ---
-	if not Global.is_cutscene_active: # <-- IMPORTANT: Add Global.is_cutscene_active check here
+	# --- FORM ROTATION (Only if NOT in a cutscene and NOT busy) ---
+	if not Global.is_cutscene_active and not is_busy: # <-- IMPORTANT: Add is_busy check here
 		if Input.is_action_just_pressed("form_next"):
 			Global.selected_form_index = (Global.selected_form_index + 1) % unlocked_states.size()
 			print("Selected form: " + unlocked_states[Global.selected_form_index])

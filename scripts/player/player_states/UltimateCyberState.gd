@@ -68,7 +68,7 @@ func physics_process(delta):
 		#player.scale = Vector2(1.2,1.2)
 		
 		# --- Rocket shooting for "yes" action ---
-		if Input.is_action_just_pressed("yes") and player.can_attack == true and Global.playerAlive and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and player.not_busy:
+		if Input.is_action_just_pressed("yes") and player.can_attack == true and Global.playerAlive and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and player.not_busy and not Global.near_save:
 			player.shoot_rocket() # Call the new function to shoot a rocket
 			#player.can_attack = false # Apply attack cooldown
 			# Use the attack_cooldown_timer's current wait_time, e.g., 1.0 from player.gd
