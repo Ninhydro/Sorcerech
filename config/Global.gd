@@ -199,13 +199,63 @@ func normal_time():
 	
 
 #Timeline
-var timepart1_start = true #start of part 1
-var timepart1_end = false #before the end boss fight od part 1
-var timepart2_start = false #start of part 2, could be similar to part 1 but different dialog
-var timepart2_magus = false #magus route
-var timepart2_cyber = false #cyber route
-var timepart2_genocide = false #bad/evil route end
-var timepart2_true = false #true end can be neutral/pacifist
+var timeline = 0 
+#0 prologue cutscene, after done change to 1, 
+#1 tutorial mode, to house (block until maya house)
+#2 minigame mode, block until house and guide to minigame
+#3 after minigame expand to town, starting chapter part 1 but stop until town, see dialog npc new aerendale
+#4 expand to tromarvelia & exactlyion, start part 1, see dialog npc tromarvelia & exactlyion
+#5 after unlock both form go to part 1 climax, change npc dialog about war
+#6 start part 2, change npc dialog for part 2
+#7 decision, check unlocked ultimate form, checkpoint go back from restart
+#8 ending timeline route, look at route status decision, change npc dialog depends on route
+#9 restart timeline if not true or pacifist
+#10 Epilogue mode (after true end or pacifist end) final change on npc dialog
+
+
+var magus_form = false
+var cyber_form = false
+var ult_magus_form = false
+var ult_cyber_form = false
+var route_status = "" # "", "Genocide", "Magus", "Cyber","True"(normal), "Pacifist"
+#(Nataly always fight Maya)  on magus & cyber routes, with the optional nora & valentina fight
+var alyra_dead = false 
+#false means alyra alive so this is true normal route -> lux dead, zach king & different dialog overall
+#true means alyra is dead so this contribute true pacifist route -> lux alive, varek king & different dialog overall
+var gawr_dead = false
+#false -> it will give extra scene on nora sealing gawr  
+#		on cyber route gawr will help king fight us (can be varek/zach) (no dialog change)
+# 		contribute pacifist end  
+#true -> unable to go to pacifist end, no extra scene
+var nora_dead = false
+#false ->  if gawr_dead = false -> save nora on sealing gawr scene
+#								on magus route help fight valentina, if valentina die then nora help with buff? 
+#								on cyber fight nora
+#								contribute pacifist end
+#false ->  if gawr_dead = true -> gawr dead, but nora is still alive somewhere
+#								on magus route fight valentina alone 
+#								on cyber fight nora
+#true ->  if gawr_dead = false -> cannot save nora on sealing gawr scene
+#								on magus route fight valentina alone 
+#								on cyber route no fight since nora is dead
+var replica_fini_dead = false
+#false -> it will give extra scene on saving valentina from fini attack 
+#		on magus route fini will help sterling fight us  (no dialog change)
+# 		contribute pacifist end  
+#true -> unable to go to pacifist end, no extra scene
+var valentina_dead = false
+#false ->  if replica_fini_dead = false -> save valentina from fini
+#								on cyber route help fight nora, if nora die then valentina help with buff? 
+#								on magus fight valentina
+#								contribute pacifist end
+#false ->  if replica_fini_dead = true -> fini dead, but valentina is still alive somewhere
+#								on cyber route fight nora alone 
+#								on magus fight valentina
+#true ->  if replica_fini_dead = false -> cannot save valentina from fini
+#								on cyber route fight nora alone 
+#								on magus route no fight since valentina is dead 
+#
+
 
 # Player tracking
 var player: Player = null

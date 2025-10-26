@@ -232,6 +232,7 @@ func _ready():
 # This is your main physics processing loop
 func _physics_process(delta):
 	# --- APPLY LOADED POSITION (ONE-TIME) ---
+	#print(Global.timeline)
 	Global.playerBody = self
 	Dialogic.VAR.set_variable("player_current_form", get_current_form_id())
 	Global.set_player_form(get_current_form_id())

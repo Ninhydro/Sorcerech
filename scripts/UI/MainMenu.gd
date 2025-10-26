@@ -59,6 +59,7 @@ func _on_new_game_button_pressed():
 	#SaveLoadManager.delete_save_game() 
 	print("Starting a New Game.")
 	Global.play_intro_cutscene = true
+	Global.timeline = 0
 	get_tree().change_scene_to_packed(main_game_scene)
 
 func _on_continue_button_pressed():

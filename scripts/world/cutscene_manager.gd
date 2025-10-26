@@ -56,3 +56,4 @@ func _on_cutscene_end():
 
 	# Emit the signal that the entire cutscene (dialog + fades) is complete.
 	emit_signal("cutscene_finished")
+	Global.timeline = 1

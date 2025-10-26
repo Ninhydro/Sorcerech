@@ -3,6 +3,7 @@ extends Area2D
 @export var target_room: String     # Name of the destination room (node or scene)
 @export var target_spawn: String    # Name of the spawn marker in the target room
 
+#@export var door: String    # Name of the spawn marker in the target room
 @onready var transition_manager = get_node("/root/TransitionManager")
 # (Alternatively, get_node("/root/TransitionManager") if autoloaded, or a NodePath to a TransitionManager node in scene.)
 
