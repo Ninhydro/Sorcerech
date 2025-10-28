@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://85jvuaj2xil8"]
+[gd_scene load_steps=7 format=3 uid="uid://ul2udlsga6b8"]
 
-[ext_resource type="Script" path="res://dialogic/cutscene/cutscene4C.gd" id="1_n3nqu"]
+[ext_resource type="Script" path="res://dialogic/cutscene/cutscene4_5.gd" id="1_hmy1w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xwwtj"]
 size = Vector2(131, 75)
@@ -107,9 +107,9 @@ _data = {
 "cutscene2": SubResource("Animation_x330y")
 }
 
-[node name="cutscene4C" type="Area2D"]
-position = Vector2(-103, -46)
-script = ExtResource("1_n3nqu")
+[node name="cutscene4_5" type="Area2D"]
+position = Vector2(79, 74)
+script = ExtResource("1_hmy1w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4.5, -27.5)

@@ -2,7 +2,7 @@ extends Node2D
 
 
 @onready var player = get_node("/root/World/Player")
-
+@onready var blocker = $StaticBody2D/CollisionShape2D
 
 func _ready() -> void:
 	#print("World ready. Initializing sandbox...")
@@ -29,6 +29,14 @@ func _ready() -> void:
 	#	$Player.allow_wall_climb = true
 
 	# Add a static floor platform if not already present
+	
+func _process(delta):
+	if Global.magus_form or Global.cyber_form:
+		blocker.disabled = true
+	else:
+		blocker.disabled = false
+		
+	
 
 
 

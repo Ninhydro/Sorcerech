@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnkwa1lnnfamm"]
+[gd_scene load_steps=17 format=3 uid="uid://cnkwa1lnnfamm"]
 
 [ext_resource type="TileSet" uid="uid://dckcj5o6bchxt" path="res://scenes/tileset/Placeholder_new_tile_set.tres" id="1_56olx"]
 [ext_resource type="Script" path="res://scripts/world/Door.gd" id="1_i5ly2"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bpidqrklxu7eb" path="res://assets_image/Background/Maya&Betael/Maya_house-Sheet.png" id="9_y8mdw"]
 [ext_resource type="PackedScene" uid="uid://mpfaxjhioomh" path="res://dialogic/cutscene/cutscene1.tscn" id="10_ltn64"]
 [ext_resource type="PackedScene" uid="uid://bm2dpkajx7qeq" path="res://dialogic/cutscene/cutscene2.tscn" id="11_53y5o"]
+[ext_resource type="PackedScene" uid="uid://bso8cbum1b7gt" path="res://dialogic/cutscene/cutscene0_5.tscn" id="12_3u6ks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_divly"]
 size = Vector2(2256, 344)
@@ -243,7 +244,7 @@ collision_mask = 3
 light_mask = 3
 visibility_layer = 3
 z_index = -1
-position = Vector2(470.5, 4.5)
+position = Vector2(483.824, 3.52335)
 shape = SubResource("RectangleShape2D_kop33")
 
 [node name="cutscene1" parent="." instance=ExtResource("10_ltn64")]
@@ -251,6 +252,9 @@ position = Vector2(-190, 312)
 
 [node name="cutscene2" parent="." instance=ExtResource("11_53y5o")]
 position = Vector2(-729, 63)
+
+[node name="cutscene0_5" parent="." instance=ExtResource("12_3u6ks")]
+position = Vector2(361, 55)
 
 [connection signal="body_entered" from="Doors/Door_Maya" to="." method="_on_door_maya_body_entered"]
 [connection signal="body_exited" from="Doors/Door_Maya" to="." method="_on_door_maya_body_exited"]
