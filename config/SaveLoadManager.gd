@@ -27,7 +27,7 @@ func save_game(player_node: Player, slot_name: String = "") -> bool:
 	print("SaveLoadManager: Attempting to save to path: {path}")
 
 	
-	Global.saving = true
+	#Global.saving = true
 	
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
@@ -110,7 +110,7 @@ func load_game(slot_name: String = "") -> Dictionary:
 	var loaded_data = {}
 	var file_path = _get_save_file_path(slot_name)
 	
-	Global.loading = true
+	#Global.loading = true
 	if not FileAccess.file_exists(file_path):
 		print("No save game found at: ", file_path)
 		return loaded_data

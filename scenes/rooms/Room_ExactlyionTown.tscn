@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://2y3devuwcuju"]
+[gd_scene load_steps=19 format=3 uid="uid://2y3devuwcuju"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room_CyberTown.gd" id="1_0e4yv"]
 [ext_resource type="TileSet" uid="uid://dckcj5o6bchxt" path="res://scenes/tileset/Placeholder_new_tile_set.tres" id="2_jv7bv"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bysoxq4wkartl" path="res://assets_image/Background/Exactlyion_Town/Exactlyion Town4.png" id="11_05u1s"]
 [ext_resource type="Texture2D" uid="uid://d2bk4f25fscup" path="res://assets_image/Background/Factory/Factory-Sheet.png" id="12_f86qt"]
 [ext_resource type="PackedScene" uid="uid://bs105i3gcljkr" path="res://scenes/world/SaveSpot.tscn" id="13_wlpeo"]
+[ext_resource type="PackedScene" uid="uid://85jvuaj2xil8" path="res://dialogic/cutscene/cutscene4C.tscn" id="14_38vj6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5eae"]
 size = Vector2(4176, 608)
@@ -543,3 +544,6 @@ frame = 6
 
 [node name="SaveSpot" parent="." instance=ExtResource("13_wlpeo")]
 position = Vector2(520, 56)
+
+[node name="cutscene4C" parent="." instance=ExtResource("14_38vj6")]
+position = Vector2(-569, -104)

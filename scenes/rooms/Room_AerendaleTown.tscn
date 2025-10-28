@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dho52j1svafa7"]
+[gd_scene load_steps=18 format=3 uid="uid://dho52j1svafa7"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room_Hub.gd" id="1_67lrk"]
 [ext_resource type="Script" path="res://scripts/world/Door.gd" id="1_sl44h"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cmcsxpyb7ey23" path="res://assets_image/Background/Aerendale_Town/Aerendale_Town2-Sheet.png" id="7_idvsl"]
 [ext_resource type="Texture2D" uid="uid://dku0ihmcy85l0" path="res://assets_image/Background/Aerendale_Town/Aerendale_Town3-Sheet.png" id="8_yvppu"]
 [ext_resource type="PackedScene" uid="uid://bs105i3gcljkr" path="res://scenes/world/SaveSpot.tscn" id="10_kj1r2"]
+[ext_resource type="PackedScene" uid="uid://cv3smeyh35wvw" path="res://dialogic/cutscene/cutscene3.tscn" id="11_02nf6"]
+[ext_resource type="PackedScene" uid="uid://bro7o1q0uinsu" path="res://dialogic/cutscene/cutscene3_5.tscn" id="12_miuam"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t33p6"]
 size = Vector2(2256, 584)
@@ -1291,3 +1293,9 @@ frame = 8
 
 [node name="SaveSpot" parent="." instance=ExtResource("10_kj1r2")]
 position = Vector2(-40, 56)
+
+[node name="cutscene3" parent="." instance=ExtResource("11_02nf6")]
+position = Vector2(164, 64)
+
+[node name="cutscene3_5" parent="." instance=ExtResource("12_miuam")]
+position = Vector2(1476, 60)

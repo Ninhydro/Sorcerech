@@ -9,12 +9,10 @@ func _ready():
 	pass
 
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Global.timeline == 1:
+	if Global.timeline == 3:
 		collision_shape.disabled = false
-
 	else:
 		collision_shape.disabled = true
 
@@ -46,7 +44,7 @@ func _on_body_entered(body):
 		Dialogic.timeline_ended.connect(_on_dialogic_finished)
 
 	# Start your dialog timeline.
-		Dialogic.start("timeline2", false)
+		Dialogic.start("timeline4", false)
 
 
 func _on_dialogic_finished(_timeline_name = ""):
@@ -63,7 +61,7 @@ func _on_dialogic_finished(_timeline_name = ""):
 
 
 
-	Global.timeline = 2
+	Global.timeline = 3.5
 
 
 

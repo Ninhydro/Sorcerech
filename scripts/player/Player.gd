@@ -232,7 +232,8 @@ func _ready():
 # This is your main physics processing loop
 func _physics_process(delta):
 	# --- APPLY LOADED POSITION (ONE-TIME) ---
-	#print(Global.timeline)
+	print(Global.timeline)
+	
 	Global.playerBody = self
 	Dialogic.VAR.set_variable("player_current_form", get_current_form_id())
 	Global.set_player_form(get_current_form_id())
@@ -276,6 +277,8 @@ func _physics_process(delta):
 				  is_grappling_active or Global.dashing or is_launched or canon_enabled or 
 				  telekinesis_enabled or Global.saving or Global.loading or is_grabbing_ledge or 
 				  Global.attacking or Global.is_dialog_open or Global.teleporting)
+	
+
 	# --- END NEW BUSY CHECK ---
 
 	# --- Player Input and Movement (Only if NOT busy and NOT dead) ---

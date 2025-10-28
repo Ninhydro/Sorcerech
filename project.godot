@@ -108,6 +108,7 @@ directories/dtl_directory={
 "timeline47": "res://dialogic/timeline/timeline47.dtl",
 "timeline48": "res://dialogic/timeline/timeline48.dtl",
 "timeline49": "res://dialogic/timeline/timeline49.dtl",
+"timeline4_5": "res://dialogic/timeline/timeline4_5.dtl",
 "timeline50": "res://dialogic/timeline/timeline50.dtl",
 "timeline51": "res://dialogic/timeline/timeline51.dtl",
 "timeline52": "res://dialogic/timeline/timeline52.dtl",
@@ -146,6 +147,7 @@ layout/style_list=["res://dialogic/Style1.tres"]
 layout/default_style="res://dialogic/Style1.tres"
 glossary/default_case_sensitive=true
 variables={
+"Global.teleport_first": 0,
 "player_current_form": ""
 }
 

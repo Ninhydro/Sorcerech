@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d31x3lq4tpd8s"]
+[gd_scene load_steps=18 format=3 uid="uid://d31x3lq4tpd8s"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room_MagusTown.gd" id="1_imj52"]
 [ext_resource type="TileSet" uid="uid://dckcj5o6bchxt" path="res://scenes/tileset/Placeholder_new_tile_set.tres" id="2_0kg3k"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://capkle5xe6dwj" path="res://assets_image/Background/Tromarvelia_Town/Tromarvelia Town1-Sheet.png" id="9_ayacu"]
 [ext_resource type="Texture2D" uid="uid://blways35fikml" path="res://assets_image/Background/Forest/Forest-Sheet.png" id="10_56501"]
 [ext_resource type="PackedScene" uid="uid://bs105i3gcljkr" path="res://scenes/world/SaveSpot.tscn" id="11_f2ex8"]
+[ext_resource type="PackedScene" uid="uid://t5sfr77m0a6y" path="res://dialogic/cutscene/cutscene4M.tscn" id="12_2serk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5t8mg"]
 size = Vector2(1953, 634)
@@ -373,3 +374,6 @@ region_rect = Rect2(512.811, 2994.34, 235.538, 204.984)
 
 [node name="SaveSpot" parent="." instance=ExtResource("11_f2ex8")]
 position = Vector2(-992, 104)
+
+[node name="cutscene4M" parent="." instance=ExtResource("12_2serk")]
+position = Vector2(553, -102)

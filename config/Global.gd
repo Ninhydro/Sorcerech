@@ -4,7 +4,7 @@ extends Node
 # ... (other variables) ...
 
 # If you need to store completed events by dialogue_id, declare it like this:
-var completed_events: Dictionary = {}
+var sub_quest: Dictionary = {}
 
 # Your existing Global.gd code with `current_scene_path` changes:
 var gameStarted: bool
@@ -255,7 +255,9 @@ var valentina_dead = false
 #								on cyber route fight nora alone 
 #								on magus route no fight since valentina is dead 
 #
-
+var teleport_first = 0.0
+var first_tromarvelia = false
+var first_exactlyion = false
 
 # Player tracking
 var player: Player = null
@@ -328,6 +330,10 @@ func get_save_data() -> Dictionary:
 		"gameStarted": gameStarted,
 		"current_scene_path": current_scene_path,
 		"play_intro_cutscene": play_intro_cutscene,
+		"cutscene_finished1": cutscene_finished1,
+		"is_cutscene_active": is_cutscene_active, # NEW: Save cutscene active state
+		"cutscene_name": cutscene_name,
+		"cutscene_playback_position": cutscene_playback_position,
 		
 		"fullscreen_on": fullscreen_on,
 		"vsync_on": vsync_on,
@@ -347,30 +353,53 @@ func get_save_data() -> Dictionary:
 		"affinity": affinity, # Save affinity
 		"player_status": player_status, # NEW: Save player status
 		
-		"completed_events": completed_events,
+		"sub_quest": sub_quest,
 		"active_quests": active_quests,
-		"completed_quests": completed_quests,
+		"completed_quests": completed_quests, #sub & main quest
+		"timeline": timeline,
+		"magus_form":magus_form,
+		"cyber_form":cyber_form,
+		"ult_magus_form":ult_magus_form,
+		"ult_cyber_form":ult_cyber_form,
+		"route_status":route_status,
+		"alyra_dead":alyra_dead,
+		"gawr_dead":gawr_dead,
+		"nora_dead":nora_dead,
+		"replica_fini_dead":replica_fini_dead,
+		"valentina_dead":valentina_dead,
 		
-		"player_position_before_dialog": {
-			"x": player_position_before_dialog.x,
-			"y": player_position_before_dialog.y
-		},
-		"scene_path_before_dialog": scene_path_before_dialog,
-		"is_cutscene_active": is_cutscene_active, # NEW: Save cutscene active state
-		"cutscene_name": cutscene_name,
-		"cutscene_playback_position": cutscene_playback_position,
+		"first_tromarvelia":first_tromarvelia,
+		"first_exactlyion":first_exactlyion
 		
-		"cutscene_finished1": cutscene_finished1
-
+		
+		
+		
 	}
 	print("Global: Gathering full save data.")
 	return data
 
+		#timeline
+		#magus_form
+		#cyber_form
+		#ult_magus_form
+		#ult_cyber_form
+		#route_status
+		#alyra_dead
+		#gawr_dead
+		#nora_dead
+		#replica_fini_dead
+		#valentina_dead
+		
 func apply_load_data(data: Dictionary):
 	current_scene_path = data.get("current_scene_path", "")
 	gameStarted = data.get("gameStarted", false)
 	play_intro_cutscene = data.get("play_intro_cutscene", false)
+	cutscene_finished1 = data.get("cutscene_finished1", false)
+	is_cutscene_active = data.get("is_cutscene_active", false)
+	cutscene_name = data.get("cutscene_name", "")
+	cutscene_playback_position = data.get("cutscene_playback_position", 0.0)
 	
+		
 	fullscreen_on = data.get("fullscreen_on", false)
 	vsync_on = data.get("vsync_on", false)
 	brightness = data.get("brightness", 1.0)
@@ -387,24 +416,31 @@ func apply_load_data(data: Dictionary):
 	set_player_form(data.get("current_form", "Normal")) 
 	playerAlive = data.get("playerAlive", true)
 
-	kills = data.get("kills", 0) # Load kills
-	affinity = data.get("affinity", 0) # Load affinity
-	player_status = data.get("player_status", "Normal") # NEW: Load player status
 	
-	completed_events = data.get("completed_events", {})
+	sub_quest = data.get("sub_quest", {})
 	active_quests = data.get("active_quests", [])
 	completed_quests = data.get("completed_quests", [])
 	
-	is_cutscene_active = data.get("is_cutscene_active", false)
-	cutscene_name = data.get("cutscene_name", "")
-	cutscene_playback_position = data.get("cutscene_playback_position", 0.0)
+	kills = data.get("kills", 0) # Load kills
+	affinity = data.get("affinity", 0) # Load affinity
+	player_status = data.get("player_status", "Normal") # NEW: Load player status
+		
+	timeline = data.get("timeline", 0)
+	magus_form = data.get("magus_form", false)
+	cyber_form = data.get("cyber_form", false)
+	ult_magus_form = data.get("ult_magus_form", false)
+	ult_cyber_form = data.get("ult_cyber_form", false)
+	route_status = data.get("route_status", "")
+	alyra_dead = data.get("alyra_dead", false)
+	gawr_dead = data.get("gawr_dead", false)
+	nora_dead = data.get("nora_dead", false)
+	replica_fini_dead = data.get("replica_fini_dead", false)
+	valentina_dead = data.get("valentina_dead", false)
 
 	
-	cutscene_finished1 = data.get("cutscene_finished1", false)
-	
-	var loaded_pos_dict = data.get("player_position_before_dialog", {"x": 0.0, "y": 0.0})
-	player_position_before_dialog = Vector2(loaded_pos_dict.x, loaded_pos_dict.y)
-	scene_path_before_dialog = data.get("scene_path_before_dialog", "")
+	first_tromarvelia = data.get("first_tromarvelia", false)
+	first_exactlyion = data.get("first_exactlyion", false)
+
 
 	
 	print("Global: All saved data applied successfully.")
@@ -441,9 +477,22 @@ func reset_to_defaults():
 	# Reset the form using the setter
 	set_player_form("Normal") 
 	
-	completed_events = {}
-
+	timeline = 0
+	magus_form = false
+	cyber_form = false
+	ult_magus_form = false
+	ult_cyber_form = false
+	route_status = ""
+	alyra_dead = false
+	gawr_dead = false
+	nora_dead = false
+	replica_fini_dead = false
+	valentina_dead = false
 	
+	first_tromarvelia =  false
+	first_exactlyion = false
+		
+	sub_quest = {}
 	active_quests = []
 	completed_quests = []
 	dialog_timeline = ""
@@ -454,7 +503,6 @@ func reset_to_defaults():
 
 	cutscene_name = ""
 	cutscene_playback_position = 0.0
-	
 	cutscene_finished1 = false
 
 	if autosave_timer.is_running():
