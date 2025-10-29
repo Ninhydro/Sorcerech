@@ -1,12 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://baky2m7irkgi0"]
+[gd_scene load_steps=9 format=3 uid="uid://baky2m7irkgi0"]
 
 [ext_resource type="TileSet" uid="uid://dckcj5o6bchxt" path="res://scenes/tileset/Placeholder_new_tile_set.tres" id="1_anecf"]
 [ext_resource type="Script" path="res://scenes/rooms/Place.gd" id="1_gh3vf"]
-[ext_resource type="Script" path="res://scripts/world/Door.gd" id="1_pg7cj"]
+[ext_resource type="Script" path="res://scripts/world/Door_press.gd" id="3_aff08"]
 [ext_resource type="Texture2D" uid="uid://gedbglkl7jus" path="res://assets_image/Background/Nora/Nora house-Sheet.png" id="4_cbkiy"]
+[ext_resource type="PackedScene" uid="uid://dp1isjgwxh2" path="res://dialogic/cutscene/cutscene5M.tscn" id="5_0sw4y"]
+[ext_resource type="PackedScene" uid="uid://1kus856tsk7e" path="res://dialogic/cutscene/cutscene6M.tscn" id="6_21ckk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ip1"]
-size = Vector2(2360, 384)
+size = Vector2(2369, 407)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lpbd"]
 size = Vector2(26.5, 24)
@@ -18,7 +20,7 @@ script = ExtResource("1_gh3vf")
 area_name = "Nora House"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-996, -128)
+position = Vector2(-991.5, -116.5)
 shape = SubResource("RectangleShape2D_f1ip1")
 
 [node name="TileMap" type="TileMap" parent="." groups=["Platforms"]]
@@ -34,7 +36,7 @@ position = Vector2(-32, 48)
 [node name="Doors" type="Node2D" parent="."]
 
 [node name="Door_TromarveliaTown" type="Area2D" parent="Doors"]
-script = ExtResource("1_pg7cj")
+script = ExtResource("3_aff08")
 target_room = "Room_TromarveliaTown"
 target_spawn = "Spawn_FromTromarveliaNora"
 
@@ -76,3 +78,9 @@ position = Vector2(-992, -120)
 texture = ExtResource("4_cbkiy")
 vframes = 4
 frame = 3
+
+[node name="cutscene5M" parent="." instance=ExtResource("5_0sw4y")]
+position = Vector2(-54, 75)
+
+[node name="cutscene6M" parent="." instance=ExtResource("6_21ckk")]
+position = Vector2(-2035.07, 72.3707)

@@ -107,7 +107,7 @@ position = Vector2(-744, 104)
 shape = SubResource("RectangleShape2D_qlktd")
 
 [node name="Door_Forest" type="Area2D" parent="Doors"]
-script = ExtResource("4_0oth5")
+script = ExtResource("2_b8suv")
 target_room = "Room_TromarveliaTown"
 target_spawn = "Spawn_FromForest2"
 
@@ -116,7 +116,7 @@ position = Vector2(-2446.5, 136)
 shape = SubResource("RectangleShape2D_5dkm6")
 
 [node name="Door_Forest2" type="Area2D" parent="Doors"]
-script = ExtResource("4_0oth5")
+script = ExtResource("2_b8suv")
 target_room = "Room_TromarveliaTown"
 target_spawn = "Spawn_FromForest"
 
@@ -377,7 +377,7 @@ frame = 7
 region_rect = Rect2(512.811, 2994.34, 235.538, 204.984)
 
 [node name="SaveSpot" parent="." instance=ExtResource("11_f2ex8")]
-position = Vector2(-992, 104)
+position = Vector2(-523, 52)
 
 [node name="cutscene4M" parent="." instance=ExtResource("12_2serk")]
 position = Vector2(553, -102)

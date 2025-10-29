@@ -68,10 +68,10 @@ position = Vector2(-592, -128)
 position = Vector2(-420, -456.25)
 
 [node name="Spawn_FromExactlyionBattlefield2" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(2952, -616)
+position = Vector2(2952, -680)
 
 [node name="Spawn_FromExactlyionValentina" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(1624, 48)
+position = Vector2(1048, 40)
 
 [node name="Spawn_FromFactory" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(2480, 56)
@@ -113,7 +113,7 @@ shape = SubResource("RectangleShape2D_05uf5")
 position = Vector2(-200, -48)
 script = ExtResource("4_fkgil")
 target_room = "Room_ExactlyionValentina"
-target_spawn = "Spawn_FromExactlyionTownddddddddddddddddddddd"
+target_spawn = "Spawn_FromExactlyionTown"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/Door_Valentina"]
 position = Vector2(1152, 128)

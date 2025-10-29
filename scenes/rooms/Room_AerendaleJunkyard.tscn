@@ -33,6 +33,7 @@ script = ExtResource("2_1v1kl")
 area_name = "Junkyard"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(-488, -104)
 shape = SubResource("RectangleShape2D_divly")
 
@@ -128,6 +129,7 @@ position = Vector2(-746, 507)
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -10
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 position = Vector2(-1120, -96)
@@ -140,6 +142,7 @@ position = Vector2(-80, -76)
 texture = ExtResource("8_4y3d0")
 vframes = 8
 frame = 2
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="Background"]
 position = Vector2(-1120, -96)
@@ -152,6 +155,7 @@ position = Vector2(-80, -76)
 texture = ExtResource("8_4y3d0")
 vframes = 8
 frame = 3
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D5" type="Sprite2D" parent="Background"]
 position = Vector2(-1120, -96)

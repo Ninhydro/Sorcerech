@@ -259,6 +259,8 @@ var teleport_first = 0.0
 var first_tromarvelia = false
 var first_exactlyion = false
 
+var meet_nora_one = false
+var meet_valentina_one = false
 # Player tracking
 var player: Player = null
 var current_area: String = ""

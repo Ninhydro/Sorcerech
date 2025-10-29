@@ -320,7 +320,7 @@ func _physics_process(delta):
 			
 			# Prevent form switching while in cannon mode
 			# This ensures the player stays in Normal form during cannon mode
-			can_switch_form = false
+			#can_switch_form = false
 			
 		elif telekinesis_enabled:
 			velocity = Vector2.ZERO
@@ -384,14 +384,15 @@ func _physics_process(delta):
 			cannon_form_switched = false
 			previous_form = ""
 		
-		if not canon_enabled and not can_switch_form:
-			can_switch_form = true
-			print("Exited cannon mode: Form switching re-enabled")
+		#if not canon_enabled and not can_switch_form:
+		#	can_switch_form = true
+		#	print("Exited cannon mode: Form switching re-enabled")
 	
 		# --- NEW: Only process attack/skill inputs if not busy ---
 		if not is_busy:
 			# Attack input (only if not dialog open)
 			if Input.is_action_just_pressed("yes") and can_attack and not Global.is_dialog_open and not_busy:
+				print("player press attack")
 				var current_form = get_current_form_id()
 				var attack_started = false
 				if current_form == "Cyber":
@@ -517,9 +518,9 @@ func _physics_process(delta):
 			scale = Vector2(1,1)
 			set_physics_process(true)
 			set_process(true)
-			can_switch_form = true
-			can_attack = true
-			can_skill = true
+			#can_switch_form = true
+			#can_attack = true
+			#can_skill = true
 			print("Player stopped on a non-bounce surface or came to rest.")
 	else:
 		# This else block handles normal gravity application when not launched, not in cannon, not telekinesis
@@ -541,7 +542,7 @@ func _physics_process(delta):
 			Global.selected_form_index = (Global.selected_form_index - 1 + unlocked_states.size()) % unlocked_states.size()
 			print("Selected form: " + unlocked_states[Global.selected_form_index])
 
-		if Input.is_action_just_pressed("form_apply") and not dead and not Global.is_dialog_open :
+		if Input.is_action_just_pressed("form_apply") and not dead and not Global.is_dialog_open  and can_switch_form == true:
 			if not canon_enabled:
 				if Global.selected_form_index != current_state_index:
 					current_state_index = Global.selected_form_index
@@ -641,11 +642,13 @@ func get_nearby_telekinesis_objects() -> Array[TelekinesisObject]:
 	
 func _on_form_cooldown_timer_timeout():
 	can_switch_form = true
+	print("can form again")
 
 func _on_attack_cooldown_timer_timeout():
 	can_attack = true
 	combo_timer_flag = true
 	AreaAttack.monitoring = false
+	print("can atatck again")
 
 func _on_skill_cooldown_timer_timeout():
 	can_skill = true
