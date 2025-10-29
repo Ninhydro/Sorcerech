@@ -40,15 +40,15 @@ func physics_update(delta):
 		elif (Input.is_action_just_pressed("jump")) and player.telekinesis_enabled == false and Global.is_dialog_open == false:
 			#print("IdleState: Detected movement input → switching to JumpState")
 			get_parent().change_state(JumpState.new(player))
-		elif Input.is_action_just_pressed("yes") and player.can_attack == true and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause :
+		#elif Input.is_action_just_pressed("yes") and player.can_attack == true and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause :
 			#print("IdleState: Detected movement input → switching to AttackState")
-			if Global.near_save == true:
-				get_parent().change_state(SaveState.new(player))
-			else:
-				get_parent().change_state(AttackState.new(player))
-		elif Input.is_action_just_pressed("no") and player.can_skill == true and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause:
+		#	if Global.near_save == true:
+		#		get_parent().change_state(SaveState.new(player))
+		#	else:
+		#		get_parent().change_state(AttackState.new(player))
+		#elif Input.is_action_just_pressed("no") and player.can_skill == true and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause:
 			#print("IdleState: Detected movement input → switching to SkillState")
-			get_parent().change_state(SkillState.new(player))
+		#	get_parent().change_state(SkillState.new(player))
 	elif player.player_hit == true:
 		#print("IdleState: Detected movement input → switching to HurtState")
 		get_parent().change_state(HurtState.new(player))

@@ -120,13 +120,13 @@ func physics_process(delta):
 		player.velocity = Vector2.ZERO # Stop player movement if these abilities are active
 	else:
 		#player.scale = Vector2(1,1) # Reset player scale
+		pass
+		#if Input.is_action_just_pressed("yes") and player.can_attack == true and Global.playerAlive and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and player.not_busy:
+		#	player.AreaAttack.monitoring = true
+		#	print("Cyber attacking")
 
-		if Input.is_action_just_pressed("yes") and player.can_attack == true and Global.playerAlive and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and player.not_busy:
-			player.AreaAttack.monitoring = true
-			print("Cyber attacking")
-
-		if Input.is_action_just_pressed("no") and player.can_skill == true and Global.playerAlive and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause:
-			perform_grapple()
+		#if Input.is_action_just_pressed("no") and player.can_skill == true and Global.playerAlive and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause:
+		#	perform_grapple()
 
 	# Handle grapple movement if currently grappling - COMPLETELY override regular movement
 	if is_grappling:
@@ -140,6 +140,15 @@ func physics_process(delta):
 	if (Input.is_action_just_pressed("move_up") or  Input.is_action_just_pressed("jump") )and is_grappling:
 		release_grapple()
 
+func perform_attack():
+	player.AreaAttack.monitoring = true
+	print("Cyber attacking")
+
+func perform_skill():
+	perform_grapple()
+	if player.combat_fsm:
+		player.combat_fsm.change_state(SkillState.new(player))
+	
 func handle_input(event):
 	pass
 
@@ -256,10 +265,16 @@ func handle_swing_movement(delta):
 	var input_dir = 0.0
 	if Input.is_action_pressed("move_left"):
 		input_dir = -1.0
-		player.facing_direction = 1
+		#print("lefttttttttt")
+		player.sprite.flip_h = true
+		player.AreaAttackColl.position = Vector2(-16,-8.75)
+		player.grapple_hand_point.position = Vector2(-abs(player.grapple_hand_point.position.x), player.grapple_hand_point.position.y)
 	elif Input.is_action_pressed("move_right"):
 		input_dir = 1.0
-		player.facing_direction = -1
+		#print("righttttttttttt")
+		player.sprite.flip_h = false
+		player.AreaAttackColl.position = Vector2(16,-8.75)
+		player.grapple_hand_point.position = Vector2(abs(player.grapple_hand_point.position.x), player.grapple_hand_point.position.y)
 
 	var effective_torque = 0.0
 

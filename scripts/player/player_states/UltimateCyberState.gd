@@ -68,17 +68,27 @@ func physics_process(delta):
 		#player.scale = Vector2(1.2,1.2)
 		
 		# --- Rocket shooting for "yes" action ---
-		if Input.is_action_just_pressed("yes") and player.can_attack == true and Global.playerAlive and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and player.not_busy and not Global.near_save:
-			player.shoot_rocket() # Call the new function to shoot a rocket
+		#if Input.is_action_just_pressed("yes") and player.can_attack == true and Global.playerAlive and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and player.not_busy and not Global.near_save:
+		#	player.shoot_rocket() # Call the new function to shoot a rocket
 			#player.can_attack = false # Apply attack cooldown
 			# Use the attack_cooldown_timer's current wait_time, e.g., 1.0 from player.gd
 			#player.attack_cooldown_timer.start(player.attack_cooldown_timer.wait_time)
-			print("Ultimate Cyber shooting rocket!")
+		#	print("Ultimate Cyber shooting rocket!")
 					
-		if Input.is_action_just_pressed("no") and player.can_skill == true and Global.playerAlive and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and player.not_busy:
-			perform_time_freeze()
+		#if Input.is_action_just_pressed("no") and player.can_skill == true and Global.playerAlive and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and player.not_busy:
+		#	perform_time_freeze()
 	
 
+func perform_attack():
+	player.shoot_rocket() # Call the new function to shoot a rocket
+			#player.can_attack = false # Apply attack cooldown
+			# Use the attack_cooldown_timer's current wait_time, e.g., 1.0 from player.gd
+			#player.attack_cooldown_timer.start(player.attack_cooldown_timer.wait_time)
+	print("Ultimate Cyber shooting rocket!")
+			
+func perform_skill():
+	perform_time_freeze()
+	
 func handle_variable_jump(delta):
 	# Check if jump button is just pressed
 	if Input.is_action_just_pressed("jump") and player.is_on_floor() and not Global.is_dialog_open and not Global.attacking and not player.is_grabbing_ledge and not player.is_grappling_active:

@@ -234,6 +234,8 @@ func _physics_process(delta):
 	# --- APPLY LOADED POSITION (ONE-TIME) ---
 	#print(Global.timeline)
 	#Global.magus_form = true
+	#print(can_attack)
+	
 	Global.playerBody = self
 	Dialogic.VAR.set_variable("player_current_form", get_current_form_id())
 	Global.set_player_form(get_current_form_id())
@@ -390,8 +392,12 @@ func _physics_process(delta):
 	
 		# --- NEW: Only process attack/skill inputs if not busy ---
 		if not is_busy:
+			#print(Global.is_dialog_open)
+			#print("not busy??")
 			# Attack input (only if not dialog open)
-			if Input.is_action_just_pressed("yes") and can_attack and not Global.is_dialog_open and not_busy:
+			#print(is_busy)
+			#print("player press attack000000000000")
+			if Input.is_action_just_pressed("yes") and can_attack and not Global.is_dialog_open:
 				print("player press attack")
 				var current_form = get_current_form_id()
 				var attack_started = false
@@ -412,6 +418,13 @@ func _physics_process(delta):
 					combo_timer.start(0.5)
 					attack_started = true
 					not_busy = false
+				
+				if current_state and current_state.has_method("perform_attack"):
+					current_state.perform_attack()
+		
+				if combat_fsm:
+					combat_fsm.change_state(AttackState.new(self))
+
 				start_cooldown()
 				
 				if attack_started:
@@ -420,31 +433,42 @@ func _physics_process(delta):
 
 			# Skill input (only if not dialog open)
 			if Input.is_action_just_pressed("no") and can_skill and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause:
-				print("=== PLAYER: 'no' pressed - Checking global flag: ", Global.ignore_player_input_after_unpause, " ===")
+				#print("=== PLAYER: 'no' pressed - Checking global flag: ", Global.ignore_player_input_after_unpause, " ===")
+				print("player press skill")
 				var current_form = get_current_form_id()
 				var skill_started = false
 				if current_form == "UltimateMagus" and not_busy: # Check for UltimateMagus first
 					skill_cooldown_timer.start(2.0)
 					skill_started = true
 					not_busy = false
-					start_cooldown()
+	
 				elif current_form == "Cyber":
 					skill_cooldown_timer.start(0.2)
 					skill_started = true
 					not_busy = false
-					start_cooldown()
+
 				elif current_form == "Magus" and not_busy:
 					skill_cooldown_timer.start(10.0)
 					skill_started = true
 					not_busy = false
-					start_cooldown()
+					if combat_fsm:
+						combat_fsm.change_state(SkillState.new(self))
+
 				elif current_form == "UltimateCyber" and not_busy: # Assuming this is different from "UltimateCyber"
 					skill_cooldown_timer.start(15.0)
 					skill_started = true
 					not_busy = false
-					start_cooldown()
+					if combat_fsm:
+						combat_fsm.change_state(SkillState.new(self))
+					
+				if current_state and current_state.has_method("perform_skill"):
+					current_state.perform_skill()
+					
 				
+				#if combat_fsm:
+				#	combat_fsm.change_state(SkillState.new(self))
 				
+				start_cooldown()
 				if skill_started:
 					can_skill = false
 					# Add your skill logic here (e.g., combat_fsm.change_state(SkillState.new(self)))

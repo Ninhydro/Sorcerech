@@ -97,36 +97,38 @@ func physics_process(delta):
 		#player.scale = Vector2(1.2,1.2)
 		#if Input.is_action_just_pressed("no"):
 			#perform_teleport_switch()
-		if Input.is_action_just_pressed("yes") and player.can_attack == true and Global.playerAlive and Global.telekinesis_mode == false and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and player.not_busy:
+		#if Input.is_action_just_pressed("yes") and player.can_attack == true and Global.playerAlive and Global.telekinesis_mode == false and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and player.not_busy:
 			#is_attacking = true
 			#attack_timer = ATTACK_DURATION
-			player.AreaAttack.monitoring = true
+		#	player.AreaAttack.monitoring = true
 			#player.AreaAttackColl.disabled = false
-			print("Ult Magus attacking")
-		
-		if is_holding == true:
+		#	print("Ult Magus attacking")
+		if Input.is_action_pressed("no") and teleport_select_mode:
 			hold_time += delta
-		if Input.is_action_pressed("no") and player.can_skill == true and Global.playerAlive and Global.telekinesis_mode == false and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and not Global.ignore_player_input_after_unpause and player.not_busy:
+			print("Holding skill button, hold_time: ", hold_time)
+		#if is_holding == true:
+		#	hold_time += delta
+		#if Input.is_action_pressed("no") and player.can_skill == true and Global.playerAlive and Global.telekinesis_mode == false and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and not Global.ignore_player_input_after_unpause and player.not_busy:
 			#hold_time += delta # Add time while holding
 			#print("teleporting")
 			
-			if !teleport_select_mode:
-				Global.teleporting = true
-				teleport_select_mode = true
-				player.telekinesis_enabled = true
-				available_objects = player.get_nearby_telekinesis_objects()
-				print("Found objects: ", available_objects)
-				if available_objects.size() > 0:
-					selected_index = 0
-					update_highlight()  # Highlight immediately
-				else:
-					print("No objects available for teleport")
-				print(player.get_nearby_telekinesis_objects())
-				print("teleport mode")
-				selected_index = 0
-				update_highlight()
-				is_holding = true
-				hold_time = 0.0
+		#	if !teleport_select_mode:
+		#		Global.teleporting = true
+		#		teleport_select_mode = true
+		#		player.telekinesis_enabled = true
+		#		available_objects = player.get_nearby_telekinesis_objects()
+		#		print("Found objects: ", available_objects)
+		#		if available_objects.size() > 0:
+		#			selected_index = 0
+		#			update_highlight()  # Highlight immediately
+		#		else:
+		#			print("No objects available for teleport")
+		#		print(player.get_nearby_telekinesis_objects())
+		#		print("teleport mode")
+		#		selected_index = 0
+		#		update_highlight()
+		#		is_holding = true
+		#		hold_time = 0.0
 			# Allow left/right selection while holding
 	
 		elif Input.is_action_just_released("no") and teleport_select_mode and Global.telekinesis_mode == false and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause:
@@ -162,7 +164,34 @@ func physics_process(delta):
 				print("left")
 				update_highlight()
 			
+func perform_attack():
+	player.AreaAttack.monitoring = true
+			#player.AreaAttackColl.disabled = false
+	print("Ult Magus attacking")
+			
+func perform_skill():
+	if !teleport_select_mode:
+				#_current_highlight_material = Global.create_highlight_material()
 
+				Global.teleporting = true
+				teleport_select_mode = true
+				player.telekinesis_enabled = true
+				available_objects = player.get_nearby_telekinesis_objects()
+				print("Found objects: ", available_objects)
+				if available_objects.size() > 0:
+					selected_index = 0
+					update_highlight()  # Highlight immediately
+				else:
+					print("No objects available for teleport")
+				print(player.get_nearby_telekinesis_objects())
+				print("teleport mode")
+				selected_index = 0
+				update_highlight()
+				is_holding = true
+				hold_time = 0.0
+				
+				if player.combat_fsm:
+					player.combat_fsm.change_state(SkillState.new(player))
 							
 func switch_with_object(obj: TelekinesisObject):
 	var player_pos = player.global_position
@@ -203,11 +232,20 @@ func do_dash():
 	print("Dash power: ", dash_power)
 	# Set dashing state
 	Global.dashing = true
+	await player.get_tree().create_timer(0.3).timeout
+	Global.dashing = false
+	
 
 func update_highlight():
 	# Filter out any invalid objects
 	# Filter out any invalid objects
-	debug_object_states() 
+	#debug_object_states() 
+	
+	if _current_highlight_material == null:
+		_current_highlight_material = Global.create_highlight_material()
+		print("Recreated highlight material: ", _current_highlight_material)
+	
+	debug_shader_visibility()	
 	available_objects = available_objects.filter(func(obj): return is_instance_valid(obj))
 	
 	if available_objects.size() == 0:
@@ -232,7 +270,23 @@ func update_highlight():
 				else:
 					# Restore original material for non-selected objects
 					sprite.material = _object_original_materials[obj]
-					
+
+func debug_shader_visibility():
+	print("=== SHADER DEBUG ===")
+	print("Highlight material: ", _current_highlight_material)
+	if _current_highlight_material:
+		print("Shader: ", _current_highlight_material.shader)
+		print("Shader valid: ", _current_highlight_material.shader != null)
+	
+	for i in range(available_objects.size()):
+		var obj = available_objects[i]
+		if is_instance_valid(obj):
+			var sprite = obj.get_node_or_null("Sprite2D")
+			if sprite:
+				print("Object ", i, " current material: ", sprite.material)
+				print("Object ", i, " texture: ", sprite.texture)
+	print("===================")
+	
 func debug_object_states():
 	print("=== OBJECT DEBUG ===")
 	print("Available objects count: ", available_objects.size())

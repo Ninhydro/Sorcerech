@@ -159,15 +159,15 @@ func physics_process(delta):
 		player.velocity = Vector2.ZERO
 	else:
 		#player.scale = Vector2(1,1)
-		
-		if Input.is_action_just_pressed("yes") and player.can_attack == true and Global.playerAlive and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and player.not_busy and not Global.near_save:
-			player.shoot_fireball()
-			print("Magus shooting fireball!")
+		pass
+		#if Input.is_action_just_pressed("yes") and player.can_attack == true and Global.playerAlive and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and player.not_busy and not Global.near_save:
+		#	player.shoot_fireball()
+		#	print("Magus shooting fireball!")
 			
-		if Input.is_action_just_pressed("no") and player.can_skill == true and Global.playerAlive and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and player.not_busy:
+		#if Input.is_action_just_pressed("no") and player.can_skill == true and Global.playerAlive and not Global.is_dialog_open and not Global.ignore_player_input_after_unpause and player.not_busy:
 			# Only toggle if timed camouflage is not already active
-			if not _is_camouflage_active_timed:
-				toggle_camouflage()
+		#	if not _is_camouflage_active_timed:
+		#		toggle_camouflage()
 	
 	if not _sprite_node or not _sprite_node.material or not (_sprite_node.material is ShaderMaterial):
 		return # Exit early if our shader is not active.
@@ -176,7 +176,14 @@ func physics_process(delta):
 	# _camouflage_target_alpha will be 0.5 if camouflage is ON, else 1.0
 	_sprite_node.material.set_shader_parameter("camouflage_alpha_override", _camouflage_target_alpha)
 
-
+func perform_attack():
+	player.shoot_fireball()
+	print("Magus shooting fireball!")
+	
+func perform_skill():
+	if not _is_camouflage_active_timed:
+		toggle_camouflage()
+			
 func handle_input(event):
 	pass
 

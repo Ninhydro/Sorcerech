@@ -20,7 +20,8 @@ func enter():
 			#player.anim_sprite.play("cyber_slash")
 			# Maybe activate grapple or combo effects
 			#print("Cyber skill")
-			player.still_animation = true # <--- This is correct for starting the skill animation
+			#player.still_animation = false
+			#player.still_animation = true # <--- This is correct for starting the skill animation
 			player.anim_state.travel("ability_cyber")
 		"UltimateMagus":
 			#player.anim_sprite.play("ultimate_magus_blast")
@@ -31,6 +32,7 @@ func enter():
 				#player.anim_state.travel("ability_ult_magus")
 				#player.still_animation = true 
 			#elif not Global.dashing:
+			#player.still_animation = false
 			player.anim_state.travel("ability_ult_magus_2")
 				
 		"UltimateCyber":
@@ -51,36 +53,30 @@ func physics_update(delta):
 	# The key here is that if player.still_animation is true (set by CyberState when grappling),
 	# this condition will evaluate to false, and the state will NOT change.
 	var form = player.get_current_form_id()
-	if !(Input.is_action_just_pressed("no")) and player.still_animation == false and not form == "UltimateMagus":
-		Global.attacking = false
-		print("exiting skills")
-		if player.is_on_floor():
-			if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
-				#print("IdleState: Detected movement input → switching to RunState")
-				get_parent().change_state(RunState.new(player))
-			else:
-				#print("IdleState: Detected movement input → switching to IdleState")
-				get_parent().change_state(IdleState.new(player))
+	# For Cyber form, only exit when grappling is complete
+	if form == "Cyber":
+		if !player.is_grappling_active and player.still_animation == false:
+			exit_skill_state()
+	# For Ultimate Magus, handle teleport completion
+	elif form == "UltimateMagus":
+		# For dash: exit when dash is complete
+		if Global.dashing == false and not player.current_state.teleport_select_mode:
+			exit_skill_state()
+		# For teleport: exit when teleport is complete  
+		elif not player.current_state.teleport_select_mode and not Global.teleporting:
+			exit_skill_state()
+	else:
+		if !(Input.is_action_just_pressed("no")) and player.still_animation == false:
+			exit_skill_state()
 
+		
+func exit_skill_state():
+	Global.attacking = false
+	print("exiting skills")
+	if player.is_on_floor():
+		if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+			get_parent().change_state(RunState.new(player))
 		else:
-			#print("IdleState: Detected movement input → switching to JumpState")
-			get_parent().change_state(JumpState.new(player))
-	if form == "UltimateMagus":
-		if Global.teleporting == false:
-			Global.attacking = false
-			print("ult magus exiting teleporting")
-			if player.is_on_floor():
-				if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
-					#print("IdleState: Detected movement input → switching to RunState")
-					get_parent().change_state(RunState.new(player))
-				else:
-					#print("IdleState: Detected movement input → switching to IdleState")
-					get_parent().change_state(IdleState.new(player))
-
-			else:
-				#print("IdleState: Detected movement input → switching to JumpState")
-				get_parent().change_state(JumpState.new(player))
-		
-
-		
-		
+			get_parent().change_state(IdleState.new(player))
+	else:
+		get_parent().change_state(JumpState.new(player))
