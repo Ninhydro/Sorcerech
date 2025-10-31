@@ -110,7 +110,7 @@ func load_game(slot_name: String = "") -> Dictionary:
 	var loaded_data = {}
 	var file_path = _get_save_file_path(slot_name)
 	
-	Global.loading = true
+	#Global.loading = true
 	if not FileAccess.file_exists(file_path):
 		print("No save game found at: ", file_path)
 		return loaded_data

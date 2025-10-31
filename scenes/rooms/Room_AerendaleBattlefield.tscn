@@ -25,7 +25,7 @@ size = Vector2(945, 392)
 size = Vector2(151.948, 69.9919)
 
 [node name="RoomAerendaleBattlefield" type="Node2D"]
-position = Vector2(48, -16)
+position = Vector2(48, -7)
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_is433")
@@ -61,6 +61,7 @@ position = Vector2(-16, 744)
 position = Vector2(-2568, -304)
 
 [node name="Spawn_FromTBattlefield" type="Marker2D" parent="SpawnPoints"]
+visible = false
 position = Vector2(-1824, 352)
 
 [node name="Spawn_FromCyberTown" type="Marker2D" parent="SpawnPoints"]
@@ -77,6 +78,9 @@ position = Vector2(1600, -280)
 
 [node name="Spawn_ToA2" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(1520, 312)
+
+[node name="Spawn_C7" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-26, -303)
 
 [node name="Doors" type="Node2D" parent="."]
 position = Vector2(56, -48)
@@ -300,6 +304,8 @@ position = Vector2(1656, 616)
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -10
+position = Vector2(0, 3)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D67" type="Sprite2D" parent="Background"]
 position = Vector2(2456, -424)
@@ -307,13 +313,31 @@ scale = Vector2(1.40859, 1.67695)
 texture = ExtResource("6_7cj6d")
 region_enabled = true
 region_rect = Rect2(600.282, 1217.01, 361.377, 218.565)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D141" type="Sprite2D" parent="Background"]
+position = Vector2(2720, -425)
+scale = Vector2(1.40859, 1.67695)
+texture = ExtResource("6_7cj6d")
+region_enabled = true
+region_rect = Rect2(600.282, 1217.01, 361.377, 218.565)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D68" type="Sprite2D" parent="Background"]
-position = Vector2(-2464, -416)
+position = Vector2(-2509, -417)
 scale = Vector2(1.40859, 1.67695)
 texture = ExtResource("7_v5ei2")
 region_enabled = true
 region_rect = Rect2(11.1068, 1784.85, 224.774, 219.806)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D140" type="Sprite2D" parent="Background"]
+position = Vector2(-2691, -417)
+scale = Vector2(1.40859, 1.67695)
+texture = ExtResource("7_v5ei2")
+region_enabled = true
+region_rect = Rect2(11.1068, 1784.85, 224.774, 219.806)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="Background"]
 position = Vector2(-1624, 560)
@@ -321,6 +345,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="Background"]
 position = Vector2(-1376, 552)
@@ -328,6 +353,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D5" type="Sprite2D" parent="Background"]
 position = Vector2(-1216, 552)
@@ -335,6 +361,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D6" type="Sprite2D" parent="Background"]
 position = Vector2(-1024, 552)
@@ -342,6 +369,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D7" type="Sprite2D" parent="Background"]
 position = Vector2(-856, 552)
@@ -349,6 +377,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D8" type="Sprite2D" parent="Background"]
 position = Vector2(-408, 640)
@@ -356,6 +385,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D9" type="Sprite2D" parent="Background"]
 position = Vector2(-208, 656)
@@ -363,6 +393,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D10" type="Sprite2D" parent="Background"]
 position = Vector2(304, 664)
@@ -370,6 +401,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D11" type="Sprite2D" parent="Background"]
 position = Vector2(776, 512)
@@ -377,6 +409,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D12" type="Sprite2D" parent="Background"]
 position = Vector2(960, 512)
@@ -384,6 +417,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D13" type="Sprite2D" parent="Background"]
 position = Vector2(1128, 512)
@@ -391,6 +425,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D14" type="Sprite2D" parent="Background"]
 position = Vector2(1336, 520)
@@ -398,6 +433,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D15" type="Sprite2D" parent="Background"]
 position = Vector2(1544, 520)
@@ -405,6 +441,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D16" type="Sprite2D" parent="Background"]
 position = Vector2(2432, 640)
@@ -412,6 +449,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D17" type="Sprite2D" parent="Background"]
 position = Vector2(2248, 640)
@@ -419,6 +457,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D18" type="Sprite2D" parent="Background"]
 position = Vector2(2056, 648)
@@ -426,6 +465,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D19" type="Sprite2D" parent="Background"]
 position = Vector2(736, 1048)
@@ -433,6 +473,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D20" type="Sprite2D" parent="Background"]
 position = Vector2(1224, 1048)
@@ -440,6 +481,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D21" type="Sprite2D" parent="Background"]
 position = Vector2(976, 1040)
@@ -447,6 +489,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D22" type="Sprite2D" parent="Background"]
 position = Vector2(1840, -368)
@@ -454,6 +497,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D23" type="Sprite2D" parent="Background"]
 position = Vector2(1192, -336)
@@ -461,6 +505,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D24" type="Sprite2D" parent="Background"]
 position = Vector2(968, -336)
@@ -468,6 +513,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D25" type="Sprite2D" parent="Background"]
 position = Vector2(376, -384)
@@ -475,6 +521,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D26" type="Sprite2D" parent="Background"]
 position = Vector2(216, -376)
@@ -482,6 +529,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D27" type="Sprite2D" parent="Background"]
 position = Vector2(-56, -384)
@@ -489,6 +537,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D28" type="Sprite2D" parent="Background"]
 position = Vector2(-224, -384)
@@ -496,6 +545,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D29" type="Sprite2D" parent="Background"]
 position = Vector2(-464, -384)
@@ -503,6 +553,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D30" type="Sprite2D" parent="Background"]
 position = Vector2(-936, -352)
@@ -510,6 +561,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D31" type="Sprite2D" parent="Background"]
 position = Vector2(-1208, -352)
@@ -517,6 +569,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D32" type="Sprite2D" parent="Background"]
 position = Vector2(-1880, -368)
@@ -524,6 +577,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D33" type="Sprite2D" parent="Background"]
 position = Vector2(-2088, -368)
@@ -531,6 +585,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D34" type="Sprite2D" parent="Background"]
 position = Vector2(-1584, -352)
@@ -538,6 +593,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D35" type="Sprite2D" parent="Background"]
 position = Vector2(1392, -336)
@@ -545,6 +601,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D36" type="Sprite2D" parent="Background"]
 position = Vector2(2048, -368)
@@ -552,6 +609,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1686.8, 10493, 180.992, 299.174)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D37" type="Sprite2D" parent="Background"]
 position = Vector2(1104, 1040)
@@ -559,6 +617,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D38" type="Sprite2D" parent="Background"]
 position = Vector2(816, 1040)
@@ -566,6 +625,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D39" type="Sprite2D" parent="Background"]
 position = Vector2(2336, 640)
@@ -573,6 +633,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D40" type="Sprite2D" parent="Background"]
 position = Vector2(2120, 640)
@@ -580,6 +641,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D41" type="Sprite2D" parent="Background"]
 position = Vector2(1384, 512)
@@ -587,6 +649,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D42" type="Sprite2D" parent="Background"]
 position = Vector2(1176, 512)
@@ -594,6 +657,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D43" type="Sprite2D" parent="Background"]
 position = Vector2(992, 512)
@@ -601,6 +665,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D44" type="Sprite2D" parent="Background"]
 position = Vector2(816, 512)
@@ -608,6 +673,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D45" type="Sprite2D" parent="Background"]
 position = Vector2(-104, 656)
@@ -615,6 +681,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D46" type="Sprite2D" parent="Background"]
 position = Vector2(392, 568)
@@ -622,6 +689,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D65" type="Sprite2D" parent="Background"]
 position = Vector2(168, 648)
@@ -629,6 +697,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D47" type="Sprite2D" parent="Background"]
 position = Vector2(-344, 656)
@@ -636,6 +705,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D48" type="Sprite2D" parent="Background"]
 position = Vector2(-760, 544)
@@ -643,6 +713,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D49" type="Sprite2D" parent="Background"]
 position = Vector2(-984, 544)
@@ -650,6 +721,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D50" type="Sprite2D" parent="Background"]
 position = Vector2(-1176, 544)
@@ -657,6 +729,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D51" type="Sprite2D" parent="Background"]
 position = Vector2(-1328, 544)
@@ -664,6 +737,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D52" type="Sprite2D" parent="Background"]
 position = Vector2(-2000, -368)
@@ -671,6 +745,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D53" type="Sprite2D" parent="Background"]
 position = Vector2(-2240, -368)
@@ -678,6 +753,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D54" type="Sprite2D" parent="Background"]
 position = Vector2(-1376, -352)
@@ -685,6 +761,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D55" type="Sprite2D" parent="Background"]
 position = Vector2(-1096, -352)
@@ -692,6 +769,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D56" type="Sprite2D" parent="Background"]
 position = Vector2(-368, -384)
@@ -699,6 +777,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D57" type="Sprite2D" parent="Background"]
 position = Vector2(-168, -384)
@@ -706,6 +785,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D58" type="Sprite2D" parent="Background"]
 position = Vector2(96, -384)
@@ -713,6 +793,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D59" type="Sprite2D" parent="Background"]
 position = Vector2(272, -384)
@@ -720,6 +801,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D60" type="Sprite2D" parent="Background"]
 position = Vector2(824, -336)
@@ -727,6 +809,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D61" type="Sprite2D" parent="Background"]
 position = Vector2(1048, -336)
@@ -734,6 +817,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D62" type="Sprite2D" parent="Background"]
 position = Vector2(1280, -336)
@@ -741,6 +825,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D63" type="Sprite2D" parent="Background"]
 position = Vector2(1904, -368)
@@ -748,6 +833,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D64" type="Sprite2D" parent="Background"]
 position = Vector2(2128, -368)
@@ -755,6 +841,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(1705.85, 12638.2, 216.529, 315.702)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D66" type="Sprite2D" parent="Background"]
 position = Vector2(2048, -264)
@@ -762,6 +849,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(664.925, 13967.9, 688.615, 89.5713)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D69" type="Sprite2D" parent="Background"]
 position = Vector2(1120, -240)
@@ -769,6 +857,7 @@ scale = Vector2(1, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(664.925, 13967.9, 688.615, 89.5713)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D71" type="Sprite2D" parent="Background"]
 position = Vector2(-1128, -256)
@@ -777,6 +866,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(664.925, 13967.9, 688.615, 89.5713)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D72" type="Sprite2D" parent="Background"]
 position = Vector2(-2032, -272)
@@ -785,6 +875,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(664.925, 13967.9, 688.615, 89.5713)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D70" type="Sprite2D" parent="Background"]
 position = Vector2(10.5, -288)
@@ -792,6 +883,7 @@ scale = Vector2(0.755517, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(147.374, 13967.9, 1722.23, 96.7793)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D73" type="Sprite2D" parent="Background"]
 position = Vector2(-1185.25, 648)
@@ -799,6 +891,7 @@ scale = Vector2(0.596109, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(147.374, 13967.9, 1722.23, 96.7793)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D74" type="Sprite2D" parent="Background"]
 position = Vector2(1172.63, 616)
@@ -806,6 +899,7 @@ scale = Vector2(0.590738, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(147.374, 13967.9, 1722.23, 96.7793)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D75" type="Sprite2D" parent="Background"]
 position = Vector2(-296, 752)
@@ -813,6 +907,7 @@ scale = Vector2(0.569469, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(147.374, 13967.9, 1044.59, 96.7793)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D76" type="Sprite2D" parent="Background"]
 position = Vector2(400, 752)
@@ -820,6 +915,7 @@ scale = Vector2(0.569469, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(147.374, 13967.9, 1044.59, 96.7793)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D77" type="Sprite2D" parent="Background"]
 position = Vector2(1920, 1200)
@@ -827,6 +923,7 @@ scale = Vector2(0.569469, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(147.374, 13967.9, 1044.59, 96.7793)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D78" type="Sprite2D" parent="Background"]
 position = Vector2(2528, 1200)
@@ -834,6 +931,7 @@ scale = Vector2(0.569469, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(147.374, 13967.9, 1044.59, 96.7793)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D79" type="Sprite2D" parent="Background"]
 position = Vector2(1216, 1136)
@@ -841,6 +939,7 @@ scale = Vector2(0.569469, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(147.374, 13967.9, 1044.59, 96.7793)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D80" type="Sprite2D" parent="Background"]
 position = Vector2(632, 1144)
@@ -848,6 +947,7 @@ scale = Vector2(0.569469, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(147.374, 13967.9, 1044.59, 96.7793)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D81" type="Sprite2D" parent="Background"]
 position = Vector2(1504, 1192)
@@ -856,6 +956,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D82" type="Sprite2D" parent="Background"]
 position = Vector2(1472, 1176)
@@ -864,6 +965,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D126" type="Sprite2D" parent="Background"]
 position = Vector2(1416, 1152)
@@ -871,6 +973,7 @@ scale = Vector2(0.569469, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D83" type="Sprite2D" parent="Background"]
 position = Vector2(1440, 1160)
@@ -879,6 +982,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D84" type="Sprite2D" parent="Background"]
 position = Vector2(1680, 1208)
@@ -887,6 +991,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D85" type="Sprite2D" parent="Background"]
 position = Vector2(1864, 1208)
@@ -895,6 +1000,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D86" type="Sprite2D" parent="Background"]
 position = Vector2(2048, 1208)
@@ -903,6 +1009,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D87" type="Sprite2D" parent="Background"]
 position = Vector2(2232, 1208)
@@ -911,6 +1018,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D88" type="Sprite2D" parent="Background"]
 position = Vector2(2416, 1208)
@@ -919,6 +1027,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D89" type="Sprite2D" parent="Background"]
 position = Vector2(2605.45, 1208)
@@ -927,6 +1036,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D90" type="Sprite2D" parent="Background"]
 position = Vector2(1592, 936)
@@ -935,6 +1045,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D91" type="Sprite2D" parent="Background"]
 position = Vector2(1624, 920)
@@ -943,6 +1054,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D92" type="Sprite2D" parent="Background"]
 position = Vector2(1672, 904)
@@ -951,6 +1063,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D93" type="Sprite2D" parent="Background"]
 position = Vector2(1768, 888)
@@ -959,6 +1072,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D127" type="Sprite2D" parent="Background"]
 position = Vector2(1704, -248)
@@ -967,6 +1081,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D129" type="Sprite2D" parent="Background"]
 position = Vector2(1408, -224)
@@ -975,6 +1090,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D130" type="Sprite2D" parent="Background"]
 position = Vector2(736, -224)
@@ -983,6 +1099,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D131" type="Sprite2D" parent="Background"]
 position = Vector2(680, -248)
@@ -990,6 +1107,7 @@ scale = Vector2(0.497107, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D132" type="Sprite2D" parent="Background"]
 position = Vector2(648, -264)
@@ -997,6 +1115,7 @@ scale = Vector2(0.497107, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D133" type="Sprite2D" parent="Background"]
 position = Vector2(616, -272)
@@ -1004,6 +1123,7 @@ scale = Vector2(0.497107, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D134" type="Sprite2D" parent="Background"]
 position = Vector2(-632, -272)
@@ -1011,6 +1131,7 @@ scale = Vector2(0.497107, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D135" type="Sprite2D" parent="Background"]
 position = Vector2(-775.362, -264)
@@ -1019,6 +1140,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D137" type="Sprite2D" parent="Background"]
 position = Vector2(-1624, -248)
@@ -1026,6 +1148,7 @@ scale = Vector2(0.542132, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D139" type="Sprite2D" parent="Background"]
 position = Vector2(-1752, -256)
@@ -1033,6 +1156,7 @@ scale = Vector2(0.542132, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D138" type="Sprite2D" parent="Background"]
 position = Vector2(-1376, -240)
@@ -1040,6 +1164,7 @@ scale = Vector2(0.542132, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D136" type="Sprite2D" parent="Background"]
 position = Vector2(-912, -240)
@@ -1048,6 +1173,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D128" type="Sprite2D" parent="Background"]
 position = Vector2(1816, -256)
@@ -1056,6 +1182,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 327.327, 23.6943)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D94" type="Sprite2D" parent="Background"]
 position = Vector2(1792, 872)
@@ -1064,6 +1191,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D95" type="Sprite2D" parent="Background"]
 position = Vector2(1856, 808)
@@ -1072,6 +1200,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D96" type="Sprite2D" parent="Background"]
 position = Vector2(1933.55, 744)
@@ -1080,6 +1209,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D97" type="Sprite2D" parent="Background"]
 position = Vector2(2032, 744)
@@ -1088,6 +1218,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D98" type="Sprite2D" parent="Background"]
 position = Vector2(2128, 744)
@@ -1096,6 +1227,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D99" type="Sprite2D" parent="Background"]
 position = Vector2(2224, 744)
@@ -1104,6 +1236,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D100" type="Sprite2D" parent="Background"]
 position = Vector2(2320, 744)
@@ -1112,6 +1245,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D101" type="Sprite2D" parent="Background"]
 position = Vector2(2418.77, 744)
@@ -1120,6 +1254,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D102" type="Sprite2D" parent="Background"]
 position = Vector2(2520, 744)
@@ -1128,6 +1263,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D103" type="Sprite2D" parent="Background"]
 position = Vector2(-56, 760)
@@ -1135,6 +1271,7 @@ scale = Vector2(0.714453, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D117" type="Sprite2D" parent="Background"]
 position = Vector2(-160, 760)
@@ -1142,6 +1279,7 @@ scale = Vector2(0.714453, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D118" type="Sprite2D" parent="Background"]
 position = Vector2(-264, 760)
@@ -1149,6 +1287,7 @@ scale = Vector2(0.714453, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D119" type="Sprite2D" parent="Background"]
 position = Vector2(-328, 760)
@@ -1156,6 +1295,7 @@ scale = Vector2(0.714453, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D120" type="Sprite2D" parent="Background"]
 position = Vector2(-456, 728)
@@ -1163,6 +1303,7 @@ scale = Vector2(0.714453, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D121" type="Sprite2D" parent="Background"]
 position = Vector2(-544, 696)
@@ -1170,6 +1311,7 @@ scale = Vector2(0.714453, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D122" type="Sprite2D" parent="Background"]
 position = Vector2(-600, 680)
@@ -1177,6 +1319,7 @@ scale = Vector2(0.714453, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D123" type="Sprite2D" parent="Background"]
 position = Vector2(-664, 664)
@@ -1184,6 +1327,7 @@ scale = Vector2(0.714453, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D124" type="Sprite2D" parent="Background"]
 position = Vector2(-736, 656)
@@ -1191,6 +1335,7 @@ scale = Vector2(0.714453, 0.785098)
 texture = ExtResource("8_jafq4")
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D125" type="Sprite2D" parent="Background"]
 position = Vector2(-816, 656)
@@ -1199,6 +1344,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D104" type="Sprite2D" parent="Background"]
 position = Vector2(176, 760)
@@ -1207,6 +1353,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D105" type="Sprite2D" parent="Background"]
 position = Vector2(280, 760)
@@ -1215,6 +1362,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D106" type="Sprite2D" parent="Background"]
 position = Vector2(408, 680)
@@ -1223,6 +1371,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D107" type="Sprite2D" parent="Background"]
 position = Vector2(449.387, 664)
@@ -1231,6 +1380,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D108" type="Sprite2D" parent="Background"]
 position = Vector2(584, 648)
@@ -1239,6 +1389,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D109" type="Sprite2D" parent="Background"]
 position = Vector2(656, 632)
@@ -1247,6 +1398,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D110" type="Sprite2D" parent="Background"]
 position = Vector2(736, 616)
@@ -1255,6 +1407,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D111" type="Sprite2D" parent="Background"]
 position = Vector2(856, 616)
@@ -1263,6 +1416,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D112" type="Sprite2D" parent="Background"]
 position = Vector2(984, 616)
@@ -1271,6 +1425,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D113" type="Sprite2D" parent="Background"]
 position = Vector2(1104, 616)
@@ -1279,6 +1434,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D114" type="Sprite2D" parent="Background"]
 position = Vector2(1224, 616)
@@ -1287,6 +1443,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D115" type="Sprite2D" parent="Background"]
 position = Vector2(1344, 616)
@@ -1295,6 +1452,7 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D116" type="Sprite2D" parent="Background"]
 position = Vector2(1400, 624)
@@ -1303,3 +1461,4 @@ texture = ExtResource("8_jafq4")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
+metadata/_edit_lock_ = true

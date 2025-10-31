@@ -569,4 +569,4 @@ shape = SubResource("RectangleShape2D_06pkd")
 position = Vector2(-681, -135.75)
 
 [node name="cutscene7" parent="." instance=ExtResource("16_2xf5r")]
-position = Vector2(1044.43, 78.1288)
+position = Vector2(-657, -115)

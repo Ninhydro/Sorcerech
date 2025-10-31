@@ -265,6 +265,8 @@ var meet_valentina_one = false
 var player: Player = null
 var current_area: String = ""
 
+var killing = false
+
 # Player registration function
 func register_player(player_node: Player) -> void:
 	player = player_node
@@ -313,6 +315,10 @@ func _process(delta):
 			ignore_player_input_after_unpause = false
 			unpause_cooldown_timer = 0.0
 			print("=== GLOBAL: Input ENABLED (cooldown finished) ===")
+	
+	if Input.is_action_just_pressed("debug"):
+		killing = !killing
+		print("killing ", killing)
 	
 	# Continuous debug print - remove this after debugging
 	#print("Global input flag: ", ignore_player_input_after_unpause, " | Timer: ", unpause_cooldown_timer)

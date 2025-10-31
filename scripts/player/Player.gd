@@ -344,7 +344,7 @@ func _physics_process(delta):
 		else: # Normal movement and input processing
 			# --- NEW: Only process movement if not busy ---
 			if not is_busy:
-				print(Global.loading)
+				#print(Global.loading)
 				if facing_direction == -1: # No need for !dead check here, already done above
 					sprite.flip_h = true
 					AreaAttackColl.position = Vector2(-16,-8.75)

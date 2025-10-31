@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dho52j1svafa7"]
+[gd_scene load_steps=21 format=3 uid="uid://dho52j1svafa7"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room_Hub.gd" id="1_67lrk"]
 [ext_resource type="Script" path="res://scripts/world/Door.gd" id="1_sl44h"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://bs105i3gcljkr" path="res://scenes/world/SaveSpot.tscn" id="10_kj1r2"]
 [ext_resource type="PackedScene" uid="uid://cv3smeyh35wvw" path="res://dialogic/cutscene/cutscene3.tscn" id="11_02nf6"]
 [ext_resource type="PackedScene" uid="uid://bro7o1q0uinsu" path="res://dialogic/cutscene/cutscene3_5.tscn" id="12_miuam"]
+[ext_resource type="PackedScene" uid="uid://cfhmj1vvcbg6r" path="res://dialogic/cutscene/cutscene8.tscn" id="13_dw6lc"]
+[ext_resource type="PackedScene" uid="uid://o0t6yxnqatmc" path="res://dialogic/cutscene/cutscene9.tscn" id="14_km1yy"]
+[ext_resource type="PackedScene" uid="uid://ekqoyk4o16hl" path="res://dialogic/cutscene/cutscene10.tscn" id="15_sje5x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t33p6"]
 size = Vector2(2256, 584)
@@ -1198,12 +1201,14 @@ position = Vector2(-376, -216)
 texture = ExtResource("6_x2cyw")
 vframes = 8
 frame = 3
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background"]
 position = Vector2(-376, -216)
 texture = ExtResource("6_x2cyw")
 vframes = 8
 frame = 5
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="Background"]
 position = Vector2(-376, -228)
@@ -1211,48 +1216,56 @@ scale = Vector2(1, 1.04286)
 texture = ExtResource("6_x2cyw")
 vframes = 8
 frame = 6
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="Background"]
 position = Vector2(-344, -272)
 texture = ExtResource("6_x2cyw")
 vframes = 8
 frame = 7
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D5" type="Sprite2D" parent="Background"]
 position = Vector2(272, -32)
 texture = ExtResource("7_idvsl")
 vframes = 8
 frame = 2
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D6" type="Sprite2D" parent="Background"]
 position = Vector2(272, -32)
 texture = ExtResource("7_idvsl")
 vframes = 8
 frame = 3
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D7" type="Sprite2D" parent="Background"]
 position = Vector2(272, -32)
 texture = ExtResource("7_idvsl")
 vframes = 8
 frame = 4
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D8" type="Sprite2D" parent="Background"]
 position = Vector2(272, -32)
 texture = ExtResource("7_idvsl")
 vframes = 8
 frame = 5
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D9" type="Sprite2D" parent="Background"]
 position = Vector2(272, -32)
 texture = ExtResource("7_idvsl")
 vframes = 8
 frame = 6
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D10" type="Sprite2D" parent="Background"]
 position = Vector2(272, -32)
 texture = ExtResource("7_idvsl")
 vframes = 8
 frame = 7
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D16" type="Sprite2D" parent="Background"]
 position = Vector2(1128, -78)
@@ -1260,36 +1273,42 @@ scale = Vector2(1.01667, 1.04286)
 texture = ExtResource("8_yvppu")
 vframes = 9
 frame = 2
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D11" type="Sprite2D" parent="Background"]
 position = Vector2(1120, -72)
 texture = ExtResource("8_yvppu")
 vframes = 9
 frame = 4
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D12" type="Sprite2D" parent="Background"]
 position = Vector2(1120, -72)
 texture = ExtResource("8_yvppu")
 vframes = 9
 frame = 5
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D13" type="Sprite2D" parent="Background"]
 position = Vector2(1120, -72)
 texture = ExtResource("8_yvppu")
 vframes = 9
 frame = 6
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D14" type="Sprite2D" parent="Background"]
 position = Vector2(1120, -72)
 texture = ExtResource("8_yvppu")
 vframes = 9
 frame = 7
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D15" type="Sprite2D" parent="Background"]
 position = Vector2(1120, -72)
 texture = ExtResource("8_yvppu")
 vframes = 9
 frame = 8
+metadata/_edit_lock_ = true
 
 [node name="SaveSpot" parent="." instance=ExtResource("10_kj1r2")]
 position = Vector2(-40, 56)
@@ -1299,3 +1318,12 @@ position = Vector2(164, 64)
 
 [node name="cutscene3_5" parent="." instance=ExtResource("12_miuam")]
 position = Vector2(1476, 60)
+
+[node name="cutscene8" parent="." instance=ExtResource("13_dw6lc")]
+position = Vector2(1392, 60.8273)
+
+[node name="cutscene9" parent="." instance=ExtResource("14_km1yy")]
+position = Vector2(1230.17, 71.1483)
+
+[node name="cutscene10" parent="." instance=ExtResource("15_sje5x")]
+position = Vector2(1041.67, 79.1483)

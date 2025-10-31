@@ -4,8 +4,10 @@ var _has_been_triggered: bool = false
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @export var play_only_once: bool = true
 
-var target_room = "Room_AerendaleBattlefield"     # Name of the destination room (node or scene)
-var target_spawn = "Spawn_C7"    # Name of the spawn marker in the target room
+
+
+var target_room = "Room_AerendaleJunkyard"     # Name of the destination room (node or scene)
+var target_spawn = "Spawn_ToMaya"    # Name of the spawn marker in the target room
 
 var player_in_range = null
 
@@ -18,7 +20,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Global.timeline == 4 and Global.magus_form == true and Global.cyber_form == true: 
+	if Global.timeline == 6.2: 
 		collision_shape.disabled = false
 	else:
 		collision_shape.disabled = true
@@ -29,8 +31,6 @@ func _on_body_entered(body):
 	if (body.is_in_group("player") and not _has_been_triggered):  #and Global.cutscene_finished1 == false:
 		player_in_range = body
 		print("Player entered cutscene trigger area. Starting cutscene.")
-		
-		
 
 		if collision_shape:
 			collision_shape.set_deferred("disabled", true)
@@ -44,9 +44,7 @@ func _on_body_entered(body):
 		if play_only_once:
 			_has_been_triggered = true
 			
-		if player_in_range:
-			transition_manager.travel_to(player_in_range, target_room, target_spawn)
-			
+
 		Global.is_cutscene_active = true
 		#Global.cutscene_name = cutscene_animation_name
 		#Global.cutscene_playback_position = start_position
@@ -56,7 +54,12 @@ func _on_body_entered(body):
 		Dialogic.timeline_ended.connect(_on_dialogic_finished)
 
 	# Start your dialog timeline.
-		Dialogic.start("timeline8", false)
+		if Global.alyra_dead == false:
+			Dialogic.start("timeline13V2", false) #alive alive
+
+		elif Global.alyra_dead == true:
+			Dialogic.start("timeline13", false) #alive dead
+
 
 
 func _on_dialogic_finished(_timeline_name = ""):
@@ -73,7 +76,11 @@ func _on_dialogic_finished(_timeline_name = ""):
 
 
 
-	Global.timeline = 5
+	Global.timeline = 6.5
+	#if player_in_range:
+	#		transition_manager.travel_to(player_in_range, target_room, target_spawn)
+	#End Demo/Part 1
+	
 	
 	#Global.magus_form = true
 	#player_in_range.unlock_state("Magus")
