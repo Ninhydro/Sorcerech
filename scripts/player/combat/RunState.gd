@@ -55,6 +55,13 @@ func physics_update(delta):
 	elif player.player_hit == true:
 		#print("IdleState: Detected movement input → switching to HurtState")
 		get_parent().change_state(HurtState.new(player))
+	
+	if Global.saving == true:
+		get_parent().change_state(SaveState.new(player))
+	
+	if Global.loading == true:
+		get_parent().change_state(LoadState.new(player))
+		
 	#elif Input.is_action_pressed("no"): #hurt hp loss this is later
 	#	print("IdleState: Detected movement input → switching to HurtState")
 	#	get_parent().change_state(HurtState.new(player))

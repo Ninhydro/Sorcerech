@@ -177,8 +177,9 @@ func physics_process(delta):
 	_sprite_node.material.set_shader_parameter("camouflage_alpha_override", _camouflage_target_alpha)
 
 func perform_attack():
-	player.shoot_fireball()
-	print("Magus shooting fireball!")
+	
+		player.shoot_fireball()
+		print("Magus shooting fireball!")
 	
 func perform_skill():
 	if not _is_camouflage_active_timed:

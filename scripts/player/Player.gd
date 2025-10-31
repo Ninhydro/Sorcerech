@@ -277,7 +277,7 @@ func _physics_process(delta):
 	# --- NEW: CHECK IF PLAYER IS BUSY (can't perform normal actions) ---
 	var is_busy = (dead or Global.is_cutscene_active or player_hit or knockback_timer > 0 or 
 				  is_grappling_active or Global.dashing or is_launched or canon_enabled or 
-				  telekinesis_enabled or Global.saving or Global.loading or is_grabbing_ledge or 
+				  telekinesis_enabled or is_grabbing_ledge or 
 				  Global.attacking or Global.is_dialog_open or Global.teleporting)
 	
 
@@ -344,6 +344,7 @@ func _physics_process(delta):
 		else: # Normal movement and input processing
 			# --- NEW: Only process movement if not busy ---
 			if not is_busy:
+				print(Global.loading)
 				if facing_direction == -1: # No need for !dead check here, already done above
 					sprite.flip_h = true
 					AreaAttackColl.position = Vector2(-16,-8.75)
@@ -361,7 +362,7 @@ func _physics_process(delta):
 					velocity.x = input_dir * move_speed  #* Global.global_time_scale # Use 'speed' here for normal movement 
 				elif wall_jump_just_happened: #or current_form = cyber form,
 					pass
-				elif is_grabbing_ledge:
+				elif is_grabbing_ledge or Global.saving or Global.loading:
 					velocity.x = 0
 				else:
 					velocity.x = 0 # Stop horizontal movement if dialog is open or attacking
@@ -397,7 +398,8 @@ func _physics_process(delta):
 			# Attack input (only if not dialog open)
 			#print(is_busy)
 			#print("player press attack000000000000")
-			if Input.is_action_just_pressed("yes") and can_attack and not Global.is_dialog_open:
+	
+			if Input.is_action_just_pressed("yes") and can_attack and not Global.is_dialog_open and not Global.near_save:
 				print("player press attack")
 				var current_form = get_current_form_id()
 				var attack_started = false

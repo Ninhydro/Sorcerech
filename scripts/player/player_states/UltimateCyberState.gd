@@ -80,11 +80,12 @@ func physics_process(delta):
 	
 
 func perform_attack():
-	player.shoot_rocket() # Call the new function to shoot a rocket
-			#player.can_attack = false # Apply attack cooldown
-			# Use the attack_cooldown_timer's current wait_time, e.g., 1.0 from player.gd
-			#player.attack_cooldown_timer.start(player.attack_cooldown_timer.wait_time)
-	print("Ultimate Cyber shooting rocket!")
+
+		player.shoot_rocket() # Call the new function to shoot a rocket
+				#player.can_attack = false # Apply attack cooldown
+				# Use the attack_cooldown_timer's current wait_time, e.g., 1.0 from player.gd
+				#player.attack_cooldown_timer.start(player.attack_cooldown_timer.wait_time)
+		print("Ultimate Cyber shooting rocket!")
 			
 func perform_skill():
 	perform_time_freeze()
