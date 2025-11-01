@@ -52,6 +52,8 @@ directories/dtl_directory={
 "timeline16_5CV2": "res://dialogic/timeline/timeline16_5CV2.dtl",
 "timeline16_5M": "res://dialogic/timeline/timeline16_5M.dtl",
 "timeline16_5MV2": "res://dialogic/timeline/timeline16_5MV2.dtl",
+"timeline16_8": "res://dialogic/timeline/timeline16_8.dtl",
+"timeline16_9": "res://dialogic/timeline/timeline16_9.dtl",
 "timeline17C": "res://dialogic/timeline/timeline17C.dtl",
 "timeline17G": "res://dialogic/timeline/timeline17G.dtl",
 "timeline17M": "res://dialogic/timeline/timeline17M.dtl",
@@ -148,7 +150,17 @@ layout/style_list=["res://dialogic/Style1.tres"]
 layout/default_style="res://dialogic/Style1.tres"
 glossary/default_case_sensitive=true
 variables={
+"Global.affinity": 0,
+"Global.alyra_dead": false,
+"Global.ending_cyber": false,
+"Global.ending_magus": false,
+"Global.gawr_dead": false,
+"Global.nora_dead": false,
+"Global.player_status": "",
+"Global.replica_fini_dead": false,
+"Global.route_status": "",
 "Global.teleport_first": 0,
+"Global.valentina_dead": false,
 "player_current_form": ""
 }
 

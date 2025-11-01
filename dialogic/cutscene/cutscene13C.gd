@@ -20,7 +20,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Global.timeline == 6: #for Demo change this to 6.1 so it stop everything
+	if Global.timeline == 6.5 and Global.exactlyion_two == false: 
 		collision_shape.disabled = false
 	else:
 		collision_shape.disabled = true
@@ -54,11 +54,12 @@ func _on_body_entered(body):
 		Dialogic.timeline_ended.connect(_on_dialogic_finished)
 
 	# Start your dialog timeline.
-		if Global.alyra_dead == false:
-			Dialogic.start("timeline12V2", false) #alive alive
+		Dialogic.start("timeline14C", false)
+		#if Global.alyra_dead == false:
+		#	Dialogic.start("timeline13V2", false) #alive alive
 
-		elif Global.alyra_dead == true:
-			Dialogic.start("timeline12", false) #alive dead
+		#elif Global.alyra_dead == true:
+		#	Dialogic.start("timeline13", false) #alive dead
 
 
 
@@ -76,7 +77,8 @@ func _on_dialogic_finished(_timeline_name = ""):
 
 
 
-	Global.timeline = 6.2
+	Global.timeline = 6.5
+	Global.exactlyion_two = true
 	#if player_in_range:
 	#		transition_manager.travel_to(player_in_range, target_room, target_spawn)
 	#End Demo/Part 1

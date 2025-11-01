@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr00h80xpx5tm"]
+[gd_scene load_steps=10 format=3 uid="uid://cr00h80xpx5tm"]
 
 [ext_resource type="TileSet" uid="uid://dckcj5o6bchxt" path="res://scenes/tileset/Placeholder_new_tile_set.tres" id="1_4drjy"]
 [ext_resource type="Script" path="res://scenes/rooms/Place.gd" id="1_cgiwm"]
 [ext_resource type="Script" path="res://scripts/world/Door.gd" id="1_s6137"]
 [ext_resource type="Texture2D" uid="uid://od12xal8gb30" path="res://assets_image/Background/Tromarvelia_Dungeon/Tromarvelia Dungeon-Sheet.png" id="4_qjsbw"]
+[ext_resource type="PackedScene" uid="uid://bg247tjmx5fln" path="res://dialogic/cutscene/cutscene14M.tscn" id="5_jldd3"]
+[ext_resource type="PackedScene" uid="uid://duamxf8jlxvr0" path="res://dialogic/cutscene/cutscene15M.tscn" id="6_2fihs"]
+[ext_resource type="PackedScene" uid="uid://0gdwofoh8pbg" path="res://dialogic/cutscene/cutscene15_5M.tscn" id="7_cfnwo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmfn0"]
 size = Vector2(1464, 592)
@@ -92,3 +95,12 @@ position = Vector2(-8, -216)
 texture = ExtResource("4_qjsbw")
 vframes = 8
 frame = 7
+
+[node name="cutscene14M" parent="." instance=ExtResource("5_jldd3")]
+position = Vector2(-472, -65)
+
+[node name="cutscene15M" parent="." instance=ExtResource("6_2fihs")]
+position = Vector2(115.75, -44.25)
+
+[node name="cutscene15_5M" parent="." instance=ExtResource("7_cfnwo")]
+position = Vector2(462.75, -44.25)

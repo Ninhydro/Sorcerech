@@ -1,12 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://2dwtol1f3sey"]
+[gd_scene load_steps=9 format=3 uid="uid://2dwtol1f3sey"]
 
 [ext_resource type="Script" path="res://scenes/rooms/Place.gd" id="1_5efam"]
 [ext_resource type="Script" path="res://scripts/world/Door.gd" id="1_bfrxd"]
 [ext_resource type="TileSet" uid="uid://dckcj5o6bchxt" path="res://scenes/tileset/Placeholder_new_tile_set.tres" id="1_up4da"]
 [ext_resource type="Texture2D" uid="uid://b8owh3b71jqfo" path="res://assets_image/Background/Exactlyion_Center/Exactlyion Center-Sheet.png" id="4_o0ofr"]
+[ext_resource type="PackedScene" uid="uid://bronoe2p580sf" path="res://dialogic/cutscene/cutscene14C.tscn" id="5_jn263"]
+[ext_resource type="PackedScene" uid="uid://b6neiab4paji0" path="res://dialogic/cutscene/cutscene15C.tscn" id="6_u8h6v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfvtn"]
-size = Vector2(1029, 465)
+size = Vector2(1044, 465)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spevo"]
 size = Vector2(28, 24)
@@ -18,7 +20,7 @@ script = ExtResource("1_5efam")
 area_name = "Exactlyion Central Room"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-210.5, -159.5)
+position = Vector2(-218, -159.5)
 shape = SubResource("RectangleShape2D_xfvtn")
 
 [node name="TileMap" type="TileMap" parent="." groups=["Platforms"]]
@@ -51,7 +53,7 @@ target_room = "Room_ExactlyionBattlefield2"
 target_spawn = "Spawn_FromExactlyionCentral"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/Door_ExactlyionBattlefield2"]
-position = Vector2(280, 96)
+position = Vector2(288.801, 106.124)
 shape = SubResource("RectangleShape2D_spevo")
 
 [node name="Label" type="Label" parent="."]
@@ -83,3 +85,9 @@ scale = Vector2(0.983333, 1)
 texture = ExtResource("4_o0ofr")
 region_enabled = true
 region_rect = Rect2(819.003, 479.241, 133.199, 488.253)
+
+[node name="cutscene14C" parent="." instance=ExtResource("5_jn263")]
+position = Vector2(-468, -61)
+
+[node name="cutscene15C" parent="." instance=ExtResource("6_u8h6v")]
+position = Vector2(205.301, 45.624)

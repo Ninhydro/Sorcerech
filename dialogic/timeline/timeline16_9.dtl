@@ -1,0 +1,26 @@
+join Player center
+Player (Normal): Cutscene in junkyard for decision route ending
+- Side with Magus | [if {Global.affinity} <= 0] [else="disable"]
+	Go to magus route
+	if {Global.alyra_dead} == true:
+		set {Global.route_status} = "Magus"
+		jump timeline17M/
+	elif {Global.alyra_dead} == false:
+		set {Global.route_status} = "Magus"
+		jump timeline17MV2/
+- Side with Cyber | [if {Global.affinity} >= 0] [else="disable"]
+	Go to cyber route
+	set {Global.route_status} = "Cyber"
+	jump timeline17C/
+- Find other way | [if {Global.ending_magus} == true && {Global.ending_cyber} == true] [else="disable"]
+	Go to true route/pacifist
+	if {Global.player_status} == "Neutral":
+		set {Global.route_status} = "True"
+		jump timeline17T/
+	elif {Global.player_status} == "Pacifist":
+		set {Global.route_status} = "Pacifist"
+		jump timeline17T/
+- Burn the world | [if {Global.player_status} == "Genocide"] [else="disable"]
+	Go to genocide route
+	set {Global.route_status} = "Genocide"
+	jump timeline17G/

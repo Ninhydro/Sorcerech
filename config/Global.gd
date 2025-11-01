@@ -139,7 +139,7 @@ var enemyAknockback := Vector2.ZERO
 
 var kills: int = 0 # Initialize kills
 var affinity: int = 0 # Initialize affinity
-var player_status: String = "Normal" # NEW: Player status
+var player_status: String = "Neutral" # NEW: Player status
 
 var active_quests := []
 var completed_quests := []
@@ -258,9 +258,23 @@ var valentina_dead = false
 var teleport_first = 0.0
 var first_tromarvelia = false
 var first_exactlyion = false
-
 var meet_nora_one = false
 var meet_valentina_one = false
+
+var exactlyion_two = false
+var tromarvelia_two = false
+var meet_replica = false
+var meet_gawr = false
+var after_battle_replica = false
+var after_battle_gawr = false
+
+
+
+var ending_magus = false
+var ending_cyber = false
+var ending_genocide = false
+var ending_true = false
+var ending_pacifist = false
 # Player tracking
 var player: Player = null
 var current_area: String = ""
@@ -304,7 +318,7 @@ func _init():
 	# Initialize profile data defaults
 	kills = 0
 	affinity = 0
-	player_status = "Normal"
+	player_status = "Neutral"
 	current_form = "Normal" # Initialize the backing variable
 
 func _process(delta):
@@ -377,8 +391,24 @@ func get_save_data() -> Dictionary:
 		"valentina_dead":valentina_dead,
 		
 		"first_tromarvelia":first_tromarvelia,
-		"first_exactlyion":first_exactlyion
+		"first_exactlyion":first_exactlyion,
+		"meet_nora_one":meet_nora_one,
+		"meet_valentina_one":meet_valentina_one,
 		
+		"exactlyion_two":exactlyion_two,
+		"tromarvelia_two":tromarvelia_two,
+		"meet_replica":meet_replica,
+		"meet_gawr":meet_gawr,
+		"after_battle_replica":after_battle_replica,
+		"after_battle_gawr":after_battle_gawr,
+		
+		"ending_magus":ending_magus,
+		"ending_cyber":ending_cyber,
+		"ending_genocide":ending_genocide,
+		"ending_true":ending_true,
+		"ending_pacifist":ending_pacifist
+
+
 		
 		
 		
@@ -431,7 +461,7 @@ func apply_load_data(data: Dictionary):
 	
 	kills = data.get("kills", 0) # Load kills
 	affinity = data.get("affinity", 0) # Load affinity
-	player_status = data.get("player_status", "Normal") # NEW: Load player status
+	player_status = data.get("player_status", "Neutral") # NEW: Load player status
 		
 	timeline = data.get("timeline", 0)
 	magus_form = data.get("magus_form", false)
@@ -448,6 +478,23 @@ func apply_load_data(data: Dictionary):
 	
 	first_tromarvelia = data.get("first_tromarvelia", false)
 	first_exactlyion = data.get("first_exactlyion", false)
+	meet_nora_one = data.get("meet_nora_one", false)
+	meet_valentina_one = data.get("meet_valentina_one", false)
+	
+	exactlyion_two = data.get("exactlyion_two", false)
+	tromarvelia_two = data.get("tromarvelia_two", false)
+	meet_replica = data.get("meet_replica", false)
+	meet_gawr = data.get("meet_gawr", false)
+	after_battle_replica = data.get("after_battle_replica", false)
+	after_battle_gawr = data.get("after_battle_gawr", false)
+
+	ending_magus = data.get("ending_magus", false)
+	ending_cyber = data.get("ending_cyber", false)
+	ending_genocide = data.get("ending_genocide", false)
+	ending_true = data.get("ending_true", false)
+	ending_pacifist = data.get("ending_pacifist", false)
+	
+
 
 
 	
@@ -481,7 +528,7 @@ func reset_to_defaults():
 	
 	kills = 0 # Reset kills
 	affinity = 0 # Reset affinity
-	player_status = "Normal" # NEW: Reset player status
+	player_status = "Neutral" # NEW: Reset player status
 	# Reset the form using the setter
 	set_player_form("Normal") 
 	
@@ -499,7 +546,23 @@ func reset_to_defaults():
 	
 	first_tromarvelia =  false
 	first_exactlyion = false
-		
+	meet_nora_one = false
+	meet_valentina_one = false
+
+	exactlyion_two = false
+	tromarvelia_two = false
+	meet_replica = false
+	meet_gawr = false
+	after_battle_replica = false
+	after_battle_gawr = false
+	
+	
+	ending_magus = false
+	ending_cyber = false
+	ending_genocide = false
+	ending_true = false
+	ending_pacifist = false
+
 	sub_quest = {}
 	active_quests = []
 	completed_quests = []

@@ -6,8 +6,11 @@ var _has_been_triggered: bool = false
 
 
 
-var target_room = "Room_AerendaleJunkyard"     # Name of the destination room (node or scene)
-var target_spawn = "Spawn_ToMaya"    # Name of the spawn marker in the target room
+var target_room = "Room_ExactlyionTown"     # Name of the destination room (node or scene)
+var target_spawn = "Spawn_FromExactlyionBattlefield2"    # Name of the spawn marker in the target room
+
+var target_room2 = "Room_ExactlyionTown"     # Name of the destination room (node or scene)
+var target_spawn2 = "Spawn_FromExactlyionValentina"    # Name of the spawn marker in the target room
 
 var player_in_range = null
 
@@ -20,7 +23,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Global.timeline == 6: #for Demo change this to 6.1 so it stop everything
+	if Global.timeline == 6.5 and Global.meet_replica == true and Global.after_battle_replica == false: 
 		collision_shape.disabled = false
 	else:
 		collision_shape.disabled = true
@@ -54,11 +57,20 @@ func _on_body_entered(body):
 		Dialogic.timeline_ended.connect(_on_dialogic_finished)
 
 	# Start your dialog timeline.
-		if Global.alyra_dead == false:
-			Dialogic.start("timeline12V2", false) #alive alive
+		if Global.killing == true:
+			Global.ult_cyber_form = true
+			Global.replica_fini_dead = true
+			Dialogic.start("timeline16C", false)
+		elif Global.killing == false:
+			Global.ult_cyber_form = false
+			Global.replica_fini_dead = false
+			Dialogic.start("timeline16CV2", false)
+			
+		#if Global.alyra_dead == false:
+		#	Dialogic.start("timeline13V2", false) #alive alive
 
-		elif Global.alyra_dead == true:
-			Dialogic.start("timeline12", false) #alive dead
+		#elif Global.alyra_dead == true:
+		#	Dialogic.start("timeline13", false) #alive dead
 
 
 
@@ -76,7 +88,23 @@ func _on_dialogic_finished(_timeline_name = ""):
 
 
 
-	Global.timeline = 6.2
+	Global.timeline = 6.5
+	Global.after_battle_replica = true
+	
+	#Global.cyber_form = true
+	if Global.ult_cyber_form == true and Global.replica_fini_dead == true:
+		player_in_range.unlock_state("UltimateCyber")
+		player_in_range.switch_state("UltimateCyber")
+		Global.selected_form_index = 4
+		player_in_range.current_state_index = Global.selected_form_index
+		player_in_range.combat_fsm.change_state(IdleState.new(player_in_range))
+		if player_in_range:
+			transition_manager.travel_to(player_in_range, target_room2, target_spawn2)
+	elif Global.ult_cyber_form == false and Global.replica_fini_dead == false:
+		if player_in_range:
+			transition_manager.travel_to(player_in_range, target_room, target_spawn)
+		
+	
 	#if player_in_range:
 	#		transition_manager.travel_to(player_in_range, target_room, target_spawn)
 	#End Demo/Part 1

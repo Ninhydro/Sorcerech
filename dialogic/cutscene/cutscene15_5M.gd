@@ -6,8 +6,8 @@ var _has_been_triggered: bool = false
 
 
 
-var target_room = "Room_AerendaleJunkyard"     # Name of the destination room (node or scene)
-var target_spawn = "Spawn_ToMaya"    # Name of the spawn marker in the target room
+var target_room = "Room_TromarveliaTown"     # Name of the destination room (node or scene)
+var target_spawn = "Spawn_FromTBattlefield"    # Name of the spawn marker in the target room
 
 var player_in_range = null
 
@@ -20,7 +20,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Global.timeline == 6: #for Demo change this to 6.1 so it stop everything
+	if Global.timeline == 6.5 and Global.after_battle_gawr == true and Global.gawr_dead == false and Global.ult_magus_form == false: 
 		collision_shape.disabled = false
 	else:
 		collision_shape.disabled = true
@@ -54,11 +54,17 @@ func _on_body_entered(body):
 		Dialogic.timeline_ended.connect(_on_dialogic_finished)
 
 	# Start your dialog timeline.
-		if Global.alyra_dead == false:
-			Dialogic.start("timeline12V2", false) #alive alive
+		if Global.killing == true: #killing = not saving nora
+			Dialogic.start("timeline16_5MV2", false)
+			Global.nora_dead = true
+		elif Global.killing == false:
+			Dialogic.start("timeline16_5M", false)
+			Global.nora_dead = false
+		#if Global.alyra_dead == false:
+		#	Dialogic.start("timeline13V2", false) #alive alive
 
-		elif Global.alyra_dead == true:
-			Dialogic.start("timeline12", false) #alive dead
+		#elif Global.alyra_dead == true:
+		#	Dialogic.start("timeline13", false) #alive dead
 
 
 
@@ -76,7 +82,20 @@ func _on_dialogic_finished(_timeline_name = ""):
 
 
 
-	Global.timeline = 6.2
+	Global.timeline = 6.5
+	
+	Global.ult_magus_form = true
+	
+	player_in_range.unlock_state("UltimateMagus")
+	player_in_range.switch_state("UltimateMagus")
+	Global.selected_form_index = 0
+	player_in_range.current_state_index = Global.selected_form_index
+	player_in_range.combat_fsm.change_state(IdleState.new(player_in_range))
+	
+	if player_in_range:
+			transition_manager.travel_to(player_in_range, target_room, target_spawn)
+
+	
 	#if player_in_range:
 	#		transition_manager.travel_to(player_in_range, target_room, target_spawn)
 	#End Demo/Part 1

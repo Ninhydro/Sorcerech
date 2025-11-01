@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cnkwa1lnnfamm"]
+[gd_scene load_steps=20 format=3 uid="uid://cnkwa1lnnfamm"]
 
 [ext_resource type="TileSet" uid="uid://dckcj5o6bchxt" path="res://scenes/tileset/Placeholder_new_tile_set.tres" id="1_56olx"]
 [ext_resource type="Script" path="res://scripts/world/Door.gd" id="1_i5ly2"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bso8cbum1b7gt" path="res://dialogic/cutscene/cutscene0_5.tscn" id="12_3u6ks"]
 [ext_resource type="PackedScene" uid="uid://noms7cegc8b4" path="res://dialogic/cutscene/cutscene11.tscn" id="13_7roe7"]
 [ext_resource type="PackedScene" uid="uid://dq2br0aamhue3" path="res://dialogic/cutscene/cutscene12.tscn" id="14_djwtx"]
+[ext_resource type="PackedScene" uid="uid://bo5mt846nnc7v" path="res://dialogic/cutscene/cutscene16_9.tscn" id="15_fyka4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_divly"]
 size = Vector2(2256, 344)
@@ -281,6 +282,9 @@ position = Vector2(-121.912, 330.781)
 
 [node name="cutscene12" parent="." instance=ExtResource("14_djwtx")]
 position = Vector2(54.0882, 331.281)
+
+[node name="cutscene16_9" parent="." instance=ExtResource("15_fyka4")]
+position = Vector2(-179.525, 249.757)
 
 [connection signal="body_entered" from="Doors/Door_Maya" to="." method="_on_door_maya_body_entered"]
 [connection signal="body_exited" from="Doors/Door_Maya" to="." method="_on_door_maya_body_exited"]
