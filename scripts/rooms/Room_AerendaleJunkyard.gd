@@ -36,7 +36,7 @@ func _ready():
 # NEW: Function to receive player reference from World.gd and pass it down
 
 func _process(delta):
-	if Global.timeline == 0 or Global.timeline == 1 or Global.timeline == 2:
+	if Global.timeline >= 0 and Global.timeline <= 2:
 		blocker.disabled = false
 	else:
 		blocker.disabled = true

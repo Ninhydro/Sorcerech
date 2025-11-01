@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dignl4ivlyijc"]
+[gd_scene load_steps=14 format=3 uid="uid://dignl4ivlyijc"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room_HiddenTown.gd" id="1_25ggv"]
 [ext_resource type="TileSet" uid="uid://dckcj5o6bchxt" path="res://scenes/tileset/Placeholder_new_tile_set.tres" id="1_grdml"]
@@ -7,13 +7,18 @@
 [ext_resource type="Script" path="res://scripts/world/Door_press.gd" id="4_t8vyq"]
 [ext_resource type="PackedScene" uid="uid://cfecqsjeojxxt" path="res://scenes/objects/GrapplePoint.tscn" id="5_1ulpy"]
 [ext_resource type="Texture2D" uid="uid://cyo1c33rxnaxd" path="res://assets_image/Background/Ruins/Ruins1-Sheet.png" id="7_26p74"]
+[ext_resource type="Texture2D" uid="uid://bkjde6nisre66" path="res://assets_image/Background/Aerendale_Capital/Aerendale_Capital_1-Sheet.png" id="8_3hpuu"]
 [ext_resource type="PackedScene" uid="uid://bs105i3gcljkr" path="res://scenes/world/SaveSpot.tscn" id="8_5i4no"]
+[ext_resource type="PackedScene" uid="uid://ds2wiv5ixrc7e" path="res://dialogic/cutscene/cutscene17_5.tscn" id="10_8d8am"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gaot"]
 size = Vector2(2656, 1064)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lyel"]
-size = Vector2(39, 33)
+size = Vector2(39, 67.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1lsqq"]
+size = Vector2(355, 463)
 
 [node name="RoomHiddenRuins" type="Node2D"]
 script = ExtResource("1_25ggv")
@@ -39,7 +44,7 @@ layer_0/tile_data = PackedInt32Array(327675, 851969, 0, 327676, 851969, 0, 32767
 position = Vector2(2488, -408)
 
 [node name="Spawn_FromCapital" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(40, 48)
+position = Vector2(79, 40)
 
 [node name="Doors" type="Node2D" parent="."]
 
@@ -58,7 +63,7 @@ target_room = "Room_AerendaleCapital"
 target_spawn = "Spawn_FromHiddenRuins"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/Door_Hub"]
-position = Vector2(-16, 56)
+position = Vector2(2, 26.75)
 shape = SubResource("RectangleShape2D_7lyel")
 
 [node name="Label" type="Label" parent="."]
@@ -457,5 +462,26 @@ region_enabled = true
 region_rect = Rect2(-43.013, 6480.84, 2013.15, 504.608)
 metadata/_edit_lock_ = true
 
+[node name="Sprite2D37" type="Sprite2D" parent="Background"]
+position = Vector2(289, 57)
+texture = ExtResource("8_3hpuu")
+vframes = 7
+frame = 5
+metadata/_edit_lock_ = true
+
 [node name="SaveSpot" parent="." instance=ExtResource("8_5i4no")]
 position = Vector2(2352, -392)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+light_mask = 3
+visibility_layer = 3
+z_index = -1
+position = Vector2(-146, -43)
+shape = SubResource("RectangleShape2D_1lsqq")
+
+[node name="cutscene17_5" parent="." instance=ExtResource("10_8d8am")]
+position = Vector2(-213, -17)

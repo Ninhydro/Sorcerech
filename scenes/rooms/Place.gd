@@ -3,6 +3,8 @@ extends Area2D
 
 @export var area_name: String = ""
 
+#Global.timeline >= 5 and Global.timeline <= 6
+
 func _ready():
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)

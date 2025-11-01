@@ -1,13 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbo4t4k7ob3qg"]
+[gd_scene load_steps=17 format=3 uid="uid://dbo4t4k7ob3qg"]
 
 [ext_resource type="TileSet" uid="uid://dckcj5o6bchxt" path="res://scenes/tileset/Placeholder_new_tile_set.tres" id="1_2u37g"]
 [ext_resource type="Script" path="res://scripts/world/Door.gd" id="1_gdouu"]
 [ext_resource type="Script" path="res://scenes/rooms/Place.gd" id="1_is433"]
+[ext_resource type="Script" path="res://scripts/rooms/Room_AerendaleBattlefield.gd" id="1_wgtaq"]
 [ext_resource type="PackedScene" uid="uid://cfecqsjeojxxt" path="res://scenes/objects/GrapplePoint.tscn" id="3_62ecm"]
 [ext_resource type="PackedScene" uid="uid://krbnmqo4s6nb" path="res://scenes/objects/TObject.tscn" id="4_iyt17"]
 [ext_resource type="Texture2D" uid="uid://cd412y7cue6qm" path="res://assets_image/Background/Aerendale_battlefield/Aerendale-battlefieldE-Sheet.png" id="6_7cj6d"]
 [ext_resource type="Texture2D" uid="uid://dalievtk5j7oc" path="res://assets_image/Background/Aerendale_battlefield/Aerendale-battlefieldT-Sheet.png" id="7_v5ei2"]
 [ext_resource type="Texture2D" uid="uid://drcnusij8a3e1" path="res://assets_image/Background/Aerendale_battlefield/Aerendale-battlefield1-Sheet.png" id="8_jafq4"]
+[ext_resource type="PackedScene" uid="uid://c54rarboga6it" path="res://dialogic/cutscene/cutscene7_5.tscn" id="10_85oow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4ope"]
 size = Vector2(4395, 465)
@@ -24,8 +26,12 @@ size = Vector2(945, 392)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s6660"]
 size = Vector2(151.948, 69.9919)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8y6j"]
+size = Vector2(355, 463)
+
 [node name="RoomAerendaleBattlefield" type="Node2D"]
 position = Vector2(48, -7)
+script = ExtResource("1_wgtaq")
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_is433")
@@ -128,7 +134,7 @@ target_room = "Room_ExactlyionTown"
 target_spawn = "Spawn_FromABattlefield"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/Door_CyberTown"]
-position = Vector2(2496, -120)
+position = Vector2(2525, -120)
 rotation = 1.57952
 shape = SubResource("RectangleShape2D_s6660")
 
@@ -1467,3 +1473,33 @@ flip_h = true
 region_enabled = true
 region_rect = Rect2(-6.02401, 15095.7, 149.088, 24.9785)
 metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-3254, -338)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+light_mask = 3
+visibility_layer = 3
+z_index = -1
+position = Vector2(482, 2)
+shape = SubResource("RectangleShape2D_i8y6j")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(2324, -395)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+light_mask = 3
+visibility_layer = 3
+z_index = -1
+position = Vector2(483.824, 3.52335)
+shape = SubResource("RectangleShape2D_i8y6j")
+
+[node name="cutscene7_5" parent="." instance=ExtResource("10_85oow")]
+position = Vector2(-2646, -267)
+
+[node name="cutscene7_6" parent="." instance=ExtResource("10_85oow")]
+position = Vector2(2691, -256)

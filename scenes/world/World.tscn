@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bsj8x1oxp0cqn"]
+[gd_scene load_steps=37 format=3 uid="uid://bsj8x1oxp0cqn"]
 
 [ext_resource type="Script" path="res://scripts/world/World.gd" id="1_w1wil"]
 [ext_resource type="Texture2D" uid="uid://cs81f8ne403tw" path="res://assets_image/Background/Tileset/Tileset2.png" id="3_h6vgj"]
@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dho52j1svafa7" path="res://scenes/rooms/Room_AerendaleTown.tscn" id="4_6wqko"]
 [ext_resource type="Texture2D" uid="uid://dofu1tkqmlwwb" path="res://assets_image/Background/Tileset/Tileset2v2.png" id="4_8msco"]
 [ext_resource type="PackedScene" uid="uid://cnkwa1lnnfamm" path="res://scenes/rooms/Room_AerendaleJunkyard.tscn" id="5_d2ced"]
+[ext_resource type="Shader" path="res://shaders/war_shader.gdshader" id="6_66776"]
 [ext_resource type="PackedScene" uid="uid://dbo4t4k7ob3qg" path="res://scenes/rooms/Room_AerendaleBattlefield.tscn" id="6_t47eu"]
 [ext_resource type="PackedScene" uid="uid://bkcqtqfijxmyn" path="res://scenes/rooms/Room_AerendaleCapital.tscn" id="7_ou7s5"]
+[ext_resource type="Script" path="res://scenes/world/war_effect.gd" id="7_t1be6"]
 [ext_resource type="PackedScene" uid="uid://dignl4ivlyijc" path="res://scenes/rooms/Room_HiddenRuins.tscn" id="9_8mm3s"]
 [ext_resource type="PackedScene" uid="uid://klvtn501ec6g" path="res://scenes/rooms/Room_HiddenRuinsField.tscn" id="9_v56yw"]
 [ext_resource type="PackedScene" uid="uid://d31x3lq4tpd8s" path="res://scenes/rooms/Room_TromarveliaTown.tscn" id="10_vsvcc"]
@@ -29,8 +31,6 @@
 [ext_resource type="Texture2D" uid="uid://b1gd4c7mqo3uw" path="res://assets_image/Background/background_global.png" id="26_s8eqm"]
 [ext_resource type="Texture2D" uid="uid://b44my00md6qm4" path="res://assets_image/Background/background_globalv2.png" id="27_jkmgr"]
 [ext_resource type="Texture2D" uid="uid://bdy8sq4t8gvyk" path="res://assets_image/Background/background_global_dungeon.png" id="27_ksvch"]
-[ext_resource type="Texture2D" uid="uid://b6fne3nosoabf" path="res://assets_image/Background/Junkyard/Junkyard1-Sheet.png" id="27_wicfi"]
-[ext_resource type="Texture2D" uid="uid://dbqxljqf87ypw" path="res://assets_image/Background/Junkyard/Junkyard2-Sheet.png" id="28_g2c02"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52foy"]
 texture = ExtResource("3_h6vgj")
@@ -1114,6 +1114,12 @@ physics_layer_0/collision_layer = 3
 sources/2 = SubResource("TileSetAtlasSource_srwxi")
 sources/0 = SubResource("TileSetAtlasSource_52foy")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4w8it"]
+shader = ExtResource("6_66776")
+shader_parameter/intensity = 1.0
+shader_parameter/tint_color = Color(1, 0, 0, 0.196078)
+shader_parameter/noise_intensity = 0.5
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3he12"]
 load_path = "res://.godot/imported/background_globalv2.png-591a9b11fc89fc71ee566e69d5b5c93c.ctex"
 
@@ -1128,6 +1134,16 @@ layer_0/tile_data = PackedInt32Array(6881195, 262145, 1)
 [node name="TransitionManager" parent="." instance=ExtResource("20_7o6hr")]
 
 [node name="GameHUD" parent="." instance=ExtResource("22_lv2sh")]
+
+[node name="ColorRect" type="ColorRect" parent="GameHUD"]
+visible = false
+material = SubResource("ShaderMaterial_4w8it")
+offset_left = -103.0
+offset_top = -65.0
+offset_right = 493.0
+offset_bottom = 307.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("7_t1be6")
 
 [node name="Player" parent="." instance=ExtResource("3_pp1my")]
 position = Vector2(676, 1508)
@@ -1308,26 +1324,3 @@ position = Vector2(3608, 6896)
 texture = ExtResource("26_s8eqm")
 vframes = 4
 frame = 3
-
-[node name="LocalZones" type="Node2D" parent="ParallaxBackground"]
-z_index = 10
-
-[node name="Junkyard" type="ParallaxBackground" parent="ParallaxBackground/LocalZones"]
-visible = false
-
-[node name="Aerendale_junkyard" type="ParallaxLayer" parent="ParallaxBackground/LocalZones/Junkyard"]
-motion_scale = Vector2(-0.1, -0.01)
-motion_offset = Vector2(0, 20)
-motion_mirroring = Vector2(640, 0)
-
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/LocalZones/Junkyard/Aerendale_junkyard"]
-position = Vector2(-1120, -96)
-texture = ExtResource("27_wicfi")
-vframes = 7
-frame = 2
-
-[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/LocalZones/Junkyard/Aerendale_junkyard"]
-position = Vector2(-80, -76)
-texture = ExtResource("28_g2c02")
-vframes = 8
-frame = 2

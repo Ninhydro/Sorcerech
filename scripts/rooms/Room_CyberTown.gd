@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var player = get_node("/root/World/Player")
 @onready var blocker = $StaticBody2D/CollisionShape2D
+@onready var blocker2 = $StaticBody2D2/CollisionShape2D
 
 func _ready() -> void:
 	#print("World ready. Initializing sandbox...")
@@ -35,3 +36,8 @@ func _process(delta):
 		blocker.disabled = true
 	else:
 		blocker.disabled = false
+	
+	if Global.timeline == 8:
+		blocker2.disabled = true
+	else:
+		blocker2.disabled = false

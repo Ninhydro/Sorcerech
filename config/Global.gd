@@ -32,7 +32,7 @@ func _ready():
 	#autosave_timer.timeout.connect(_on_autosave_timer_timeout)
 	#autosave_timer.start()
 	#print("Autosave timer started with interval: %s seconds" % autosave_interval_seconds)
-	highlight_shader = load("res://shaders/highlight2.gdshader")
+	highlight_shader = load("res://shaders/highlight2.gdshader") #currently I think the highlight.gdshader is not used
 	camouflage_shader = load("res://shaders/camouflage_alpha.gdshader")
 	circle_shader = load("res://shaders/circle.gdshader")
 	

@@ -15,9 +15,7 @@ extends ParallaxBackground
 }
 
 # Local parallax zones - add these as children in your scene
-@onready var local_zones = {
-	"junkyard": $LocalZones/Junkyard
-}
+@onready var local_zones = {}
 
 var current_sky_theme: String = "Aerendale"
 var active_local_zones: Array = []

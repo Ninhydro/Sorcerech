@@ -14,6 +14,7 @@ extends Node2D
 
 @onready var _player_camera: Camera2D = null # This will be assigned in _ready when player_instance is valid
 
+@onready var  war_effect = $GameHUD/ColorRect
 # Removed the @onready var cutscene_camera_node as we're using the player's camera
 var actual_player_body: Player = null # <--- CHANGE this type hint
 
@@ -28,7 +29,7 @@ func _unhandled_input(event: InputEvent):
 
 func _ready():
 	print("World: _ready() called. Global.play_intro_cutscene = ", Global.play_intro_cutscene)
-	
+
 	# --- Player Node and Camera Setup (Existing Logic) ---
 	# This section ensures the player node and its camera are correctly referenced.
 	print("World: Debug: @onready player_root_node resolved to: ", player_root_node)
@@ -144,6 +145,14 @@ func _ready():
 
 	print("Main Scene _ready() finished.")
 
+func _process(delta):
+	if (Global.timeline >= 5 and Global.timeline < 6) or (Global.timeline >= 8 and Global.timeline < 9):
+		war_effect.visible = true
+		war_effect.enable_war_effect()
+		war_effect.set_war_effect(1.0, 0.6)
+	else:
+		war_effect.visible = false
+		war_effect.disable_war_effect()
 # NEW: Function to handle when the cutscene finishes
 func _on_cutscene_finished():
 	print("World: _on_cutscene_finished() called. Enabling player and switching camera.")

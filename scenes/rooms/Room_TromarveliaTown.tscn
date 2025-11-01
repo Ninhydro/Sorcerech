@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d31x3lq4tpd8s"]
+[gd_scene load_steps=24 format=3 uid="uid://d31x3lq4tpd8s"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room_MagusTown.gd" id="1_imj52"]
 [ext_resource type="TileSet" uid="uid://dckcj5o6bchxt" path="res://scenes/tileset/Placeholder_new_tile_set.tres" id="2_0kg3k"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://nquxmuq3we7x" path="res://dialogic/cutscene/cutscene7.tscn" id="14_gimmw"]
 [ext_resource type="PackedScene" uid="uid://cfe3yc118ndke" path="res://dialogic/cutscene/cutscene13M.tscn" id="15_q52no"]
 [ext_resource type="PackedScene" uid="uid://8krsc7hlpjgk" path="res://dialogic/cutscene/cutscene16.tscn" id="16_agjfx"]
+[ext_resource type="PackedScene" uid="uid://ds2wiv5ixrc7e" path="res://dialogic/cutscene/cutscene17_5.tscn" id="17_qcqnt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5t8mg"]
 size = Vector2(1953, 634)
@@ -36,6 +37,7 @@ size = Vector2(317, 320)
 size = Vector2(355, 463)
 
 [node name="RoomTromarveliaTown" type="Node2D"]
+position = Vector2(1, 0)
 script = ExtResource("1_imj52")
 
 [node name="Area2D2" type="Area2D" parent="."]
@@ -417,9 +419,6 @@ metadata/_edit_lock_ = true
 [node name="SaveSpot" parent="." instance=ExtResource("11_f2ex8")]
 position = Vector2(-523, 52)
 
-[node name="cutscene4M" parent="." instance=ExtResource("12_2serk")]
-position = Vector2(543.75, -88.75)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 3
 collision_mask = 3
@@ -431,14 +430,31 @@ z_index = -1
 position = Vector2(795, -141)
 shape = SubResource("RectangleShape2D_3m4br")
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+light_mask = 3
+visibility_layer = 3
+z_index = -1
+position = Vector2(795, -141)
+shape = SubResource("RectangleShape2D_3m4br")
+
+[node name="cutscene4M" parent="." instance=ExtResource("12_2serk")]
+position = Vector2(543.75, -88.75)
+
 [node name="cutscene4_5" parent="." instance=ExtResource("13_v0bov")]
-position = Vector2(683, -138)
+position = Vector2(680, -138)
 
 [node name="cutscene7" parent="." instance=ExtResource("14_gimmw")]
-position = Vector2(633, -113)
+position = Vector2(586, -105)
 
 [node name="cutscene13M" parent="." instance=ExtResource("15_q52no")]
 position = Vector2(-1245.52, -26.2851)
 
 [node name="cutscene16" parent="." instance=ExtResource("16_agjfx")]
 position = Vector2(-1454.52, 17.6375)
+
+[node name="cutscene17_5" parent="." instance=ExtResource("17_qcqnt")]
+position = Vector2(674.58, -226.934)

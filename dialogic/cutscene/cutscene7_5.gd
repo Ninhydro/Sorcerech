@@ -17,7 +17,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	#print("Player position: ",player_node_ref.global_position)
-	if Global.timeline >= 0 and Global.timeline <= 2:
+	if Global.timeline >= 5 and Global.timeline <= 6:
 		if (body.is_in_group("player") and not _has_been_triggered):  #and Global.cutscene_finished1 == false:
 			print("Player entered cutscene trigger area. Starting cutscene.")
 

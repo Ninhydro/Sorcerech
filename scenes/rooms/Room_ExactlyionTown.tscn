@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://2y3devuwcuju"]
+[gd_scene load_steps=26 format=3 uid="uid://2y3devuwcuju"]
 
 [ext_resource type="Script" path="res://scripts/rooms/Room_CyberTown.gd" id="1_0e4yv"]
 [ext_resource type="TileSet" uid="uid://dckcj5o6bchxt" path="res://scenes/tileset/Placeholder_new_tile_set.tres" id="2_jv7bv"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://un1joupisgld" path="res://dialogic/cutscene/cutscene13C.tscn" id="17_odqvs"]
 [ext_resource type="PackedScene" uid="uid://c6na53py5hyof" path="res://dialogic/cutscene/cutscene15_5C.tscn" id="18_xw0yh"]
 [ext_resource type="PackedScene" uid="uid://8krsc7hlpjgk" path="res://dialogic/cutscene/cutscene16.tscn" id="19_fqxll"]
+[ext_resource type="PackedScene" uid="uid://ds2wiv5ixrc7e" path="res://dialogic/cutscene/cutscene17_5.tscn" id="20_sltx3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5eae"]
 size = Vector2(4176, 608)
@@ -586,9 +587,6 @@ metadata/_edit_lock_ = true
 [node name="SaveSpot" parent="." instance=ExtResource("13_wlpeo")]
 position = Vector2(520, 56)
 
-[node name="cutscene4C" parent="." instance=ExtResource("14_38vj6")]
-position = Vector2(-560.5, -105.25)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 3
 collision_mask = 3
@@ -600,11 +598,25 @@ z_index = -1
 position = Vector2(-804, -117)
 shape = SubResource("RectangleShape2D_06pkd")
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+light_mask = 3
+visibility_layer = 3
+z_index = -1
+position = Vector2(-804, -117)
+shape = SubResource("RectangleShape2D_06pkd")
+
+[node name="cutscene4C" parent="." instance=ExtResource("14_38vj6")]
+position = Vector2(-560.5, -105.25)
+
 [node name="cutscene4_5" parent="." instance=ExtResource("15_hq0yp")]
 position = Vector2(-681, -135.75)
 
 [node name="cutscene7" parent="." instance=ExtResource("16_2xf5r")]
-position = Vector2(-657, -115)
+position = Vector2(-638, -115)
 
 [node name="cutscene13C" parent="." instance=ExtResource("17_odqvs")]
 position = Vector2(-181, -115)
@@ -614,3 +626,6 @@ position = Vector2(2811, -684)
 
 [node name="cutscene16" parent="." instance=ExtResource("19_fqxll")]
 position = Vector2(1034.38, -16.845)
+
+[node name="cutscene17_5" parent="." instance=ExtResource("20_sltx3")]
+position = Vector2(-875.693, -225.792)

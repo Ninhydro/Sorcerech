@@ -2,7 +2,7 @@ extends Node2D
 
 
 @onready var player = get_node("/root/World/Player")
-
+@onready var blocker = $StaticBody2D/CollisionShape2D
 
 func _ready() -> void:
 	#print("World ready. Initializing sandbox...")
@@ -11,6 +11,12 @@ func _ready() -> void:
 	 # Safely enable Camera2D if it exists under the player
 	
 	pass
+	
+func process():
+	if Global.timeline == 8:
+		blocker.disabled = true
+	else:
+		blocker.disabled = false
 	#if player.has_node("Camera2D"):
 	#	var cam = $Player.get_node("Camera2D")
 	#	if cam is Camera2D:
