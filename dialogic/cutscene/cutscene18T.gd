@@ -58,7 +58,7 @@ func _on_body_entered(body):
 		#Put different dialog timeline17 on animation also later
 		if Global.route_status == "True":
 			Dialogic.start("timeline18T", false)
-		elif Global.route_status == "Pacifict":
+		elif Global.route_status == "Pacifist":
 			Dialogic.start("timeline18TP", false)
 		#if Global.alyra_dead == false:
 		#	Dialogic.start("timeline13V2", false) #alive alive

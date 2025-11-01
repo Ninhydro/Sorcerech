@@ -126,5 +126,12 @@ zoom = Vector2(2, 2)
 
 [node name="npc1" type="Sprite2D" parent="."]
 
+[node name="Label" type="Label" parent="."]
+offset_left = 22.0
+offset_top = -1.0
+offset_right = 156.0
+offset_bottom = 12.0
+text = "Press Yes to continue Ending"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

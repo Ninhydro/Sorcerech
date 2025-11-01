@@ -4,7 +4,7 @@ var _has_been_triggered: bool = false
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @export var play_only_once: bool = true
 
-
+@onready var interaction_label = $Label # Make sure you have a Label child named 'Label'
 
 var target_room = "Room_AerendaleTown"     # Name of the destination room (node or scene)
 var target_spawn = "Spawn_FromJunkyard"    # Name of the spawn marker in the target room
@@ -17,23 +17,21 @@ var player_in_range = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	interaction_label.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Global.timeline == 10 and (Global.route_status == "True" or Global.route_status == "Pacifist") and Global.game_cleared == false:
-		collision_shape.disabled = false
+		collision_shape.disabled = false			
+		if player_in_range and Input.is_action_just_pressed("yes") and not _has_been_triggered:
+			handle_interaction()
+		
 	else:
 		collision_shape.disabled = true
 
 
-func _on_body_entered(body):
-	#print("Player position: ",player_node_ref.global_position)
-	if (body.is_in_group("player") and not _has_been_triggered):  #and Global.cutscene_finished1 == false:
-		player_in_range = body
-		print("Player entered cutscene trigger area. Starting cutscene.")
-
+func handle_interaction():
 		if collision_shape:
 			collision_shape.set_deferred("disabled", true)
 		else:
@@ -61,14 +59,16 @@ func _on_body_entered(body):
 	
 		if Global.route_status == "True":
 			Dialogic.start("timeline28T", false)
-		elif Global.route_status == "Pacifict":
+		elif Global.route_status == "Pacifist":
 			Dialogic.start("timeline28TP", false)
-		
-		#if Global.alyra_dead == false:
-		#	Dialogic.start("timeline13V2", false) #alive alive
+			
+func _on_body_entered(body):
+	#print("Player position: ",player_node_ref.global_position)
 
-		#elif Global.alyra_dead == true:
-		#	Dialogic.start("timeline13", false) #alive dead
+	interaction_label.visible = true # Show the "Press E to Save" label
+	if body.name == "Player":
+		player_in_range = body
+	
 
 
 
@@ -116,4 +116,5 @@ func _on_dialogic_finished(_timeline_name = ""):
 
 
 func _on_body_exited(body):
-	pass # Replace with function body.
+	player_in_range = null
+	interaction_label.visible = false

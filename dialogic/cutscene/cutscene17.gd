@@ -25,16 +25,19 @@ var player_in_range = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#Global.player_status = "Pacifist"
 	pass
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#print(Global.player_status)
 	if Global.timeline == 7 and Global.ult_cyber_form == true and Global.ult_magus_form == true:
 		collision_shape.disabled = false
+		
 	else:
 		collision_shape.disabled = true
-
+	
+	
 
 func _on_body_entered(body):
 	#print("Player position: ",player_node_ref.global_position)
@@ -113,7 +116,7 @@ func _on_dialogic_finished(_timeline_name = ""):
 		
 	else:
 		pass
-	
+	_has_been_triggered = false
 
 
 	
