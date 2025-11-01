@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bps10xv2v18d"]
+[gd_scene load_steps=8 format=3 uid="uid://bps10xv2v18d"]
 
 [ext_resource type="Script" path="res://scenes/rooms/Place.gd" id="1_bbbin"]
 [ext_resource type="TileSet" uid="uid://dckcj5o6bchxt" path="res://scenes/tileset/Placeholder_new_tile_set.tres" id="1_nlimn"]
 [ext_resource type="Script" path="res://scripts/world/Door.gd" id="1_qvsyk"]
 [ext_resource type="Texture2D" uid="uid://bcee3cgfx1cd5" path="res://assets_image/Background/Tromarvelia_Castle/Tromarvelia Castle-Sheet.png" id="4_pgvmx"]
+[ext_resource type="PackedScene" uid="uid://dlibmhqndrefk" path="res://dialogic/cutscene/cutscene20C.tscn" id="5_1upmd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grype"]
 size = Vector2(1456, 784)
@@ -16,10 +17,12 @@ size = Vector2(26.5, 24)
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_bbbin")
 area_name = "Tromarvelia Castle Throne"
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-88, -304)
 shape = SubResource("RectangleShape2D_grype")
+metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="." groups=["Platforms"]]
 tile_set = ExtResource("1_nlimn")
@@ -51,6 +54,7 @@ text = "Tromarvelia Castle & Boss 2 Part 2 Cyber route"
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -10
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 position = Vector2(72, -296)
@@ -58,9 +62,14 @@ scale = Vector2(1.1125, 1.18)
 texture = ExtResource("4_pgvmx")
 vframes = 4
 frame = 2
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background"]
 position = Vector2(8, -304)
 texture = ExtResource("4_pgvmx")
 vframes = 4
 frame = 3
+metadata/_edit_lock_ = true
+
+[node name="cutscene20C" parent="." instance=ExtResource("5_1upmd")]
+position = Vector2(-461, -265)

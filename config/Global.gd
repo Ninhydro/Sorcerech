@@ -269,12 +269,14 @@ var after_battle_replica = false
 var after_battle_gawr = false
 
 
-
+#Some of this need to be persistent save for achievement
 var ending_magus = false
 var ending_cyber = false
 var ending_genocide = false
 var ending_true = false
 var ending_pacifist = false
+var game_cleared = false
+
 # Player tracking
 var player: Player = null
 var current_area: String = ""
@@ -406,11 +408,10 @@ func get_save_data() -> Dictionary:
 		"ending_cyber":ending_cyber,
 		"ending_genocide":ending_genocide,
 		"ending_true":ending_true,
-		"ending_pacifist":ending_pacifist
+		"ending_pacifist":ending_pacifist,
+		"game_cleared":game_cleared
 
-
-		
-		
+	
 		
 	}
 	print("Global: Gathering full save data.")
@@ -493,7 +494,7 @@ func apply_load_data(data: Dictionary):
 	ending_genocide = data.get("ending_genocide", false)
 	ending_true = data.get("ending_true", false)
 	ending_pacifist = data.get("ending_pacifist", false)
-	
+	game_cleared = data.get("game_cleared", false)
 
 
 
@@ -562,6 +563,7 @@ func reset_to_defaults():
 	ending_genocide = false
 	ending_true = false
 	ending_pacifist = false
+	game_cleared = false
 
 	sub_quest = {}
 	active_quests = []

@@ -1157,13 +1157,13 @@ position = Vector2(1152, 88)
 position = Vector2(-936, 1288)
 
 [node name="Room_HiddenRuins" parent="." instance=ExtResource("9_8mm3s")]
-position = Vector2(2368, 3456)
+position = Vector2(2712, 3528)
 
 [node name="Room_HiddenRuinsField" parent="." instance=ExtResource("9_v56yw")]
-position = Vector2(5568, 3024)
+position = Vector2(5912, 3096)
 
 [node name="Room_TromarveliaTown" parent="." instance=ExtResource("10_vsvcc")]
-position = Vector2(-3450, -125)
+position = Vector2(-3268, 153)
 
 [node name="Room_TromarveliaBattlefield" parent="." instance=ExtResource("11_rs5ry")]
 position = Vector2(-4720, 2080)
@@ -1195,8 +1195,8 @@ position = Vector2(6597, -2784)
 [node name="Room_ExactlyionValentina" parent="." instance=ExtResource("19_ojk8u")]
 position = Vector2(7174, 1475)
 
-[node name="RoomRestart" parent="." instance=ExtResource("24_mviny")]
-position = Vector2(-368, -1736)
+[node name="Room_Restart" parent="." instance=ExtResource("24_mviny")]
+position = Vector2(-1015, -1628)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_ignore_camera_zoom = true

@@ -6,8 +6,8 @@ var _has_been_triggered: bool = false
 
 
 
-var target_room = "Room_AerendaleJunkyard"     # Name of the destination room (node or scene)
-var target_spawn = "Spawn_ToMaya"    # Name of the spawn marker in the target room
+var target_room = "Room_AerendaleTown"     # Name of the destination room (node or scene)
+var target_spawn = "Spawn_FromJunkyard"    # Name of the spawn marker in the target room
 
 var player_in_range = null
 
@@ -20,7 +20,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Global.timeline == 6.5 and Global.ult_cyber_form == true and Global.ult_magus_form == true:
+	if Global.timeline == 9 and (Global.route_status == "True" or Global.route_status == "Pacifist"):
 		collision_shape.disabled = false
 	else:
 		collision_shape.disabled = true
@@ -54,7 +54,13 @@ func _on_body_entered(body):
 		Dialogic.timeline_ended.connect(_on_dialogic_finished)
 
 	# Start your dialog timeline.
-		Dialogic.start("timeline16_8", false)
+		#MIGHT NEED TO MAKE DIFFERENT ANIMATION CUTSCENE FOR DIFFERENT CHOICE OPTIONS
+		#Put different dialog timeline17 on animation also later
+		if Global.route_status == "True":
+			Dialogic.start("timeline20T", false)
+		elif Global.route_status == "Pacifict":
+			Dialogic.start("timeline20TP", false)
+
 		#if Global.alyra_dead == false:
 		#	Dialogic.start("timeline13V2", false) #alive alive
 
@@ -77,7 +83,14 @@ func _on_dialogic_finished(_timeline_name = ""):
 
 
 
-	Global.timeline = 7
+	Global.timeline = 10
+	if Global.route_status == "True":
+		Global.ending_true = true
+	elif Global.route_status == "Pacifict":
+		Global.ending_pacifist = true
+		
+
+
 	
 
 

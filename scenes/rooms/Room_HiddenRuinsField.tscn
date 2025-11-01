@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://klvtn501ec6g"]
+[gd_scene load_steps=10 format=3 uid="uid://klvtn501ec6g"]
 
 [ext_resource type="Script" path="res://scenes/rooms/Place.gd" id="1_qjc0v"]
 [ext_resource type="TileSet" uid="uid://dckcj5o6bchxt" path="res://scenes/tileset/Placeholder_new_tile_set.tres" id="1_y8a7g"]
 [ext_resource type="Script" path="res://scripts/world/Door.gd" id="2_6qppm"]
 [ext_resource type="Texture2D" uid="uid://cyo1c33rxnaxd" path="res://assets_image/Background/Ruins/Ruins1-Sheet.png" id="4_7503h"]
+[ext_resource type="Texture2D" uid="uid://do1ulxr4tfsln" path="res://assets_image/Background/True/True-Sheet.png" id="5_8rvyr"]
+[ext_resource type="PackedScene" uid="uid://cgh0xyjdhxwam" path="res://dialogic/cutscene/cutscene18T.tscn" id="6_651r7"]
+[ext_resource type="PackedScene" uid="uid://bw6lovd5tkvhv" path="res://dialogic/cutscene/cutscene19T.tscn" id="7_v7kkv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyd5r"]
 size = Vector2(1272, 536)
@@ -16,10 +19,12 @@ size = Vector2(28, 36)
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_qjc0v")
 area_name = "Ruins Temple"
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-4, -180)
 shape = SubResource("RectangleShape2D_eyd5r")
+metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="." groups=["Platforms"]]
 tile_set = ExtResource("1_y8a7g")
@@ -51,6 +56,7 @@ text = "Ruins Dungeon & True Boss"
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -10
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 position = Vector2(-7.99997, -184)
@@ -58,6 +64,7 @@ scale = Vector2(0.675, 0.503704)
 texture = ExtResource("4_7503h")
 vframes = 7
 frame = 4
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background"]
 position = Vector2(-7.99997, -184)
@@ -65,3 +72,38 @@ scale = Vector2(0.675, 0.503704)
 texture = ExtResource("4_7503h")
 vframes = 7
 frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Background"]
+position = Vector2(5, -183)
+texture = ExtResource("5_8rvyr")
+vframes = 8
+frame = 3
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="Background"]
+position = Vector2(5, -183)
+texture = ExtResource("5_8rvyr")
+vframes = 8
+frame = 5
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="Background"]
+position = Vector2(5, -183)
+texture = ExtResource("5_8rvyr")
+vframes = 8
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="Background"]
+position = Vector2(5, -183)
+texture = ExtResource("5_8rvyr")
+vframes = 8
+frame = 7
+metadata/_edit_lock_ = true
+
+[node name="cutscene18T" parent="." instance=ExtResource("6_651r7")]
+position = Vector2(-459, -39)
+
+[node name="cutscene19T" parent="." instance=ExtResource("7_v7kkv")]
+position = Vector2(126.521, -40.5723)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://kbywn64grvbj"]
+[gd_scene load_steps=8 format=3 uid="uid://kbywn64grvbj"]
 
 [ext_resource type="TileSet" uid="uid://dckcj5o6bchxt" path="res://scenes/tileset/Placeholder_new_tile_set.tres" id="1_6gcqe"]
 [ext_resource type="Script" path="res://scenes/rooms/Place.gd" id="1_xaqfk"]
 [ext_resource type="Script" path="res://scripts/world/Door.gd" id="2_q51cn"]
 [ext_resource type="Texture2D" uid="uid://c5mkkkkieulf4" path="res://assets_image/Background/Restart/Restart-Sheet.png" id="4_ht2e3"]
+[ext_resource type="PackedScene" uid="uid://bgqn1ytfh74fs" path="res://dialogic/cutscene/cutscene21R.tscn" id="5_hjivd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75f7y"]
 size = Vector2(725, 297)
@@ -16,10 +17,12 @@ size = Vector2(28, 24)
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_xaqfk")
 area_name = "Unknown"
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-277.5, -67.5)
 shape = SubResource("RectangleShape2D_75f7y")
+metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="." groups=["Platforms"]]
 tile_set = ExtResource("1_6gcqe")
@@ -51,21 +54,28 @@ text = "Valentina house"
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -10
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 position = Vector2(-280, -64)
 texture = ExtResource("4_ht2e3")
 vframes = 4
 frame = 1
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background"]
 position = Vector2(-280, -64)
 texture = ExtResource("4_ht2e3")
 vframes = 4
 frame = 2
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="Background"]
 position = Vector2(-280, -64)
 texture = ExtResource("4_ht2e3")
 vframes = 4
 frame = 3
+metadata/_edit_lock_ = true
+
+[node name="cutscene21R" parent="." instance=ExtResource("5_hjivd")]
+position = Vector2(-281, -31)

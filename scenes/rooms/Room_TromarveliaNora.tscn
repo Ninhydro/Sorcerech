@@ -18,10 +18,12 @@ size = Vector2(26.5, 24)
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_gh3vf")
 area_name = "Nora House"
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-991.5, -116.5)
 shape = SubResource("RectangleShape2D_f1ip1")
+metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="." groups=["Platforms"]]
 tile_set = ExtResource("1_anecf")
@@ -53,18 +55,20 @@ text = "Nora house"
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -10
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 position = Vector2(-992, -120)
 texture = ExtResource("4_cbkiy")
 vframes = 4
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background"]
-visible = false
 position = Vector2(-992, -120)
 texture = ExtResource("4_cbkiy")
 vframes = 4
 frame = 1
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="Background"]
 position = Vector2(-992, 36)
@@ -72,12 +76,14 @@ scale = Vector2(0.99661, 1.7)
 texture = ExtResource("4_cbkiy")
 vframes = 4
 frame = 2
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="Background"]
 position = Vector2(-992, -120)
 texture = ExtResource("4_cbkiy")
 vframes = 4
 frame = 3
+metadata/_edit_lock_ = true
 
 [node name="cutscene5M" parent="." instance=ExtResource("5_0sw4y")]
 position = Vector2(-54, 75)

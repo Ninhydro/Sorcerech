@@ -6,8 +6,18 @@ var _has_been_triggered: bool = false
 
 
 
-var target_room = "Room_AerendaleJunkyard"     # Name of the destination room (node or scene)
-var target_spawn = "Spawn_ToMaya"    # Name of the spawn marker in the target room
+var target_room1 = "Room_ExactlyionTown"     # Name of the destination room (node or scene)
+var target_spawn1 = "Spawn_FromABattlefield"    # Name of the spawn marker in the target room
+
+var target_room2 = "Room_TromarveliaTown"     # Name of the destination room (node or scene)
+var target_spawn2 = "Spawn_FromABattlefield"    # Name of the spawn marker in the target room
+
+var target_room3 = "Room_AerendaleCapital"     # Name of the destination room (node or scene)
+var target_spawn3 = "Spawn_Genocide"    # Name of the spawn marker in the target room
+
+
+var target_room4 = "Room_HiddenRuins"     # Name of the destination room (node or scene)
+var target_spawn4 = "Spawn_FromCapital"    # Name of the spawn marker in the target room
 
 var player_in_range = null
 
@@ -20,7 +30,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Global.timeline == 6.8 and Global.ult_cyber_form == true and Global.ult_magus_form == true:
+	if Global.timeline == 7 and Global.ult_cyber_form == true and Global.ult_magus_form == true:
 		collision_shape.disabled = false
 	else:
 		collision_shape.disabled = true
@@ -54,6 +64,7 @@ func _on_body_entered(body):
 		Dialogic.timeline_ended.connect(_on_dialogic_finished)
 
 	# Start your dialog timeline.
+		#MIGHT NEED TO MAKE DIFFERENT ANIMATION CUTSCENE FOR DIFFERENT CHOICE OPTIONS
 		Dialogic.start("timeline16_9", false)
 		#if Global.alyra_dead == false:
 		#	Dialogic.start("timeline13V2", false) #alive alive
@@ -75,9 +86,33 @@ func _on_dialogic_finished(_timeline_name = ""):
 	if Dialogic.timeline_ended.is_connected(_on_dialogic_finished):
 		Dialogic.timeline_ended.disconnect(_on_dialogic_finished)
 
-
-
-	Global.timeline = 7
+	
+	
+	Global.timeline = 8
+	if Global.route_status == "Magus":
+		if Global.alyra_dead == true:
+			Dialogic.start("timeline17M", false)
+		elif Global.alyra_dead == false:
+			Dialogic.start("timeline17MV2", false)
+		if player_in_range:
+			transition_manager.travel_to(player_in_range, target_room1, target_spawn1)
+	elif Global.route_status == "Cyber":
+		Dialogic.start("timeline17C", false)
+		if player_in_range:
+			transition_manager.travel_to(player_in_range, target_room2, target_spawn2)
+			
+	elif Global.route_status == "True" or Global.route_status == "Pacifist":
+		Dialogic.start("timeline17T", false)
+		if player_in_range:
+			transition_manager.travel_to(player_in_range, target_room4, target_spawn4)
+	
+	elif Global.route_status == "Genocide":
+		Dialogic.start("timeline17G", false)
+		if player_in_range:
+			transition_manager.travel_to(player_in_range, target_room3, target_spawn3)
+		
+	else:
+		pass
 	
 
 

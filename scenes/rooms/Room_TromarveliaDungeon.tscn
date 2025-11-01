@@ -19,10 +19,12 @@ size = Vector2(24.75, 24)
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_cgiwm")
 area_name = "Tromarvelia Dungeon Boss"
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-100, -208)
 shape = SubResource("RectangleShape2D_gmfn0")
+metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="." groups=["Platforms"]]
 tile_set = ExtResource("1_4drjy")
@@ -54,47 +56,55 @@ text = "Tromarvelia Dungeon & Boss 1 Part 2"
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -10
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 position = Vector2(-8, -216)
 texture = ExtResource("4_qjsbw")
 vframes = 8
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background"]
 position = Vector2(-8, -216)
 texture = ExtResource("4_qjsbw")
 vframes = 8
 frame = 1
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="Background"]
 position = Vector2(-8, -216)
 texture = ExtResource("4_qjsbw")
 vframes = 8
 frame = 2
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D4" type="Sprite2D" parent="Background"]
 position = Vector2(-8, -216)
 texture = ExtResource("4_qjsbw")
 vframes = 8
 frame = 3
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D5" type="Sprite2D" parent="Background"]
 position = Vector2(-8, -216)
 texture = ExtResource("4_qjsbw")
 vframes = 8
 frame = 4
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D6" type="Sprite2D" parent="Background"]
 position = Vector2(-8, -216)
 texture = ExtResource("4_qjsbw")
 vframes = 8
 frame = 6
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D7" type="Sprite2D" parent="Background"]
 position = Vector2(-8, -216)
 texture = ExtResource("4_qjsbw")
 vframes = 8
 frame = 7
+metadata/_edit_lock_ = true
 
 [node name="cutscene14M" parent="." instance=ExtResource("5_jldd3")]
 position = Vector2(-472, -65)

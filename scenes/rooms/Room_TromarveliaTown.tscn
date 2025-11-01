@@ -41,22 +41,27 @@ script = ExtResource("1_imj52")
 [node name="Area2D2" type="Area2D" parent="."]
 script = ExtResource("2_4r1s4")
 area_name = "Forest"
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 position = Vector2(-1864.5, -845)
 shape = SubResource("RectangleShape2D_5t8mg")
+metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("2_4r1s4")
 area_name = "Tromarvelia Town"
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1048, -208.75)
 shape = SubResource("RectangleShape2D_wlrbn")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-2168, 192)
 shape = SubResource("RectangleShape2D_jrl32")
+metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="." groups=["Platforms"]]
 tile_set = ExtResource("2_0kg3k")

@@ -6,8 +6,11 @@ var _has_been_triggered: bool = false
 
 
 
-var target_room = "Room_AerendaleJunkyard"     # Name of the destination room (node or scene)
-var target_spawn = "Spawn_ToMaya"    # Name of the spawn marker in the target room
+var target_room1 = "Room_ExactlyionTown"     # Name of the destination room (node or scene)
+var target_spawn1 = "Spawn_FromABattlefield"    # Name of the spawn marker in the target room
+
+var target_room2 = "Room_TromarveliaTown"     # Name of the destination room (node or scene)
+var target_spawn2 = "Spawn_FromABattlefield"    # Name of the spawn marker in the target room
 
 var player_in_range = null
 
@@ -20,7 +23,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Global.timeline == 6.5 and Global.ult_cyber_form == true and Global.ult_magus_form == true:
+	if Global.timeline == 8.5 and Global.route_status == "Magus":
 		collision_shape.disabled = false
 	else:
 		collision_shape.disabled = true
@@ -54,7 +57,9 @@ func _on_body_entered(body):
 		Dialogic.timeline_ended.connect(_on_dialogic_finished)
 
 	# Start your dialog timeline.
-		Dialogic.start("timeline16_8", false)
+		#MIGHT NEED TO MAKE DIFFERENT ANIMATION CUTSCENE FOR DIFFERENT CHOICE OPTIONS
+		#Put different dialog timeline17 on animation also later
+		Dialogic.start("timeline19M", false)
 		#if Global.alyra_dead == false:
 		#	Dialogic.start("timeline13V2", false) #alive alive
 
@@ -77,7 +82,8 @@ func _on_dialogic_finished(_timeline_name = ""):
 
 
 
-	Global.timeline = 7
+	Global.timeline = 8.8
+
 	
 
 

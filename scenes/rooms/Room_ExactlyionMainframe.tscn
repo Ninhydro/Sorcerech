@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://djx4sn2eal13h"]
+[gd_scene load_steps=8 format=3 uid="uid://djx4sn2eal13h"]
 
 [ext_resource type="Script" path="res://scripts/world/Door.gd" id="1_b6t2i"]
 [ext_resource type="Script" path="res://scenes/rooms/Place.gd" id="1_mpnj4"]
 [ext_resource type="TileSet" uid="uid://dckcj5o6bchxt" path="res://scenes/tileset/Placeholder_new_tile_set.tres" id="1_uqs08"]
 [ext_resource type="Texture2D" uid="uid://de8pkqja16kft" path="res://assets_image/Background/Exactlyion_Mainframe/Exactlyion Mainframe-Sheet.png" id="4_0l0wf"]
+[ext_resource type="PackedScene" uid="uid://domkt1qmgve2v" path="res://dialogic/cutscene/cutscene20M.tscn" id="5_wbc4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpp03"]
 size = Vector2(1336, 584)
@@ -16,10 +17,12 @@ size = Vector2(41, 36)
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_mpnj4")
 area_name = "Exactlyion Mainframe"
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(36, -212)
 shape = SubResource("RectangleShape2D_kpp03")
+metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="." groups=["Platforms"]]
 tile_set = ExtResource("1_uqs08")
@@ -53,12 +56,14 @@ text = "Exactlyion Mainframe & Boss 2 part 2 Magus route"
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -10
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 position = Vector2(7.99993, -216)
 scale = Vector2(1, 1.02857)
 texture = ExtResource("4_0l0wf")
 vframes = 3
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D2" type="Sprite2D" parent="Background"]
 position = Vector2(-4.00001, -216)
@@ -66,6 +71,7 @@ scale = Vector2(0.98125, 1.02857)
 texture = ExtResource("4_0l0wf")
 vframes = 3
 frame = 1
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D3" type="Sprite2D" parent="Background"]
 position = Vector2(-4.00001, -216)
@@ -73,3 +79,7 @@ scale = Vector2(0.98125, 1.02857)
 texture = ExtResource("4_0l0wf")
 vframes = 3
 frame = 2
+metadata/_edit_lock_ = true
+
+[node name="cutscene20M" parent="." instance=ExtResource("5_wbc4c")]
+position = Vector2(-355, -50)
