@@ -59,7 +59,14 @@ func _on_body_entered(body):
 	# Start your dialog timeline.
 		#MIGHT NEED TO MAKE DIFFERENT ANIMATION CUTSCENE FOR DIFFERENT CHOICE OPTIONS
 		#Put different dialog timeline17 on animation also later
-		Dialogic.start("timeline18C", false)
+		if Global.nora_dead == true:
+			Global.is_cutscene_active = false
+			Global.timeline = 8.5
+		elif Global.nora_dead == false:
+			if Global.valentina_dead == true:
+				Dialogic.start("timeline18C", false)
+			elif Global.valentina_dead == false:
+				Dialogic.start("timeline18CV2", false)
 		#if Global.alyra_dead == false:
 		#	Dialogic.start("timeline13V2", false) #alive alive
 

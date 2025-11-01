@@ -83,8 +83,7 @@ func _on_dialogic_finished(_timeline_name = ""):
 
 
 	Global.timeline = 8.8
-
-	
+	#Global.replica_fini_dead  check to help in fight
 
 
 	

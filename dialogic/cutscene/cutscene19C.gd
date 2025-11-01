@@ -86,6 +86,8 @@ func _on_dialogic_finished(_timeline_name = ""):
 
 
 	Global.timeline = 8.8
+	#Global.alyra_dead check to either varek or zach fighr
+	#Global.gawr_dead check to help in fight
 
 	
 
